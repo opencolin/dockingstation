@@ -1,0 +1,11 @@
+#!/bin/bash
+# Fluxbox startup script
+
+# Set the wallpaper
+fbsetbg -f /home/devuser/.fluxbox/wallpaper.png 2>/dev/null || \
+  xsetroot -solid "#639" &
+
+# Launch idesk for desktop icons
+idesk &
+
+# Start xterm system tray clock (optional, toolbar handles this)

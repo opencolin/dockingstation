@@ -1,0 +1,9 @@
+table Icon
+  Caption: OpenClaw
+  Command: xterm -T "OpenClaw" -fa "Monospace" -fs 12 -bg "#311B92" -fg "#EDE7F6" -e "cd /workspace && openclaw"
+  Icon: /home/devuser/.idesktop/icons/terminal.png
+  Width: 48
+  Height: 48
+  X: 160
+  Y: 240
+end

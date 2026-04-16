@@ -1,0 +1,9 @@
+table Icon
+  Caption: Crush CLI
+  Command: xterm -T "Crush CLI" -fa "Monospace" -fs 12 -bg "#BF360C" -fg "#FBE9E7" -e "cd /workspace && crush"
+  Icon: /home/devuser/.idesktop/icons/terminal.png
+  Width: 48
+  Height: 48
+  X: 160
+  Y: 140
+end

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en" data-app="dockingstation" data-version="1.0.0">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Docking Station</title>
+  <meta name="description" content="Developer container dashboard with AI coding tools">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Docking Station",
+    "description": "Developer container with 10 AI coding tools, accessible via web dashboard",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Ubuntu 22.04 LTS"
+  }
+  </script>
+</head>
+<body>
+  <header role="banner">
+    <div class="header-content">
+      <h1>Docking Station</h1>
+      <p class="subtitle">Developer Container</p>
+      <div class="status-bar" role="status" aria-live="polite">
+        <span class="status-dot" id="status-dot"></span>
+        <span id="status-text">Checking services...</span>
+      </div>
+    </div>
+  </header>
+
+  <main role="main">
+    <nav aria-label="Tool categories">
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="editor">Editors</button>
+        <button class="filter-btn" data-filter="ai">AI Assistants</button>
+        <button class="filter-btn" data-filter="utility">Utilities</button>
+      </div>
+    </nav>
+
+    <section class="tools-grid" aria-label="Available tools">
+      <!-- Each tool card has data attributes for agent parsing -->
+
+      <article class="tool-card" data-tool="code-server" data-category="editor" data-port="8080" data-status="unknown">
+        <div class="card-icon editor-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M8 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-3"/>
+            <path d="M15 3h6v6"/><path d="M10 14L21 3"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h2>VS Code Web</h2>
+          <p class="card-desc">Full IDE in the browser via code-server</p>
+          <div class="card-meta">
+            <span class="port-badge">:8080</span>
+            <span class="status-indicator" aria-label="status"></span>
+          </div>
+        </div>
+        <a href="/code-server/" class="card-link" target="_blank" rel="noopener" aria-label="Open VS Code Web">
+          <span class="link-text">Open</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </article>
+
+      <article class="tool-card" data-tool="filebrowser" data-category="utility" data-port="8443" data-status="unknown">
+        <div class="card-icon utility-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h2>File Browser</h2>
+          <p class="card-desc">Web-based file manager for /workspace</p>
+          <div class="card-meta">
+            <span class="port-badge">:8443</span>
+            <span class="status-indicator" aria-label="status"></span>
+          </div>
+        </div>
+        <a href="/files/" class="card-link" target="_blank" rel="noopener" aria-label="Open File Browser">
+          <span class="link-text">Open</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </article>
+
+      <article class="tool-card" data-tool="novnc" data-category="utility" data-port="6080" data-status="unknown">
+        <div class="card-icon utility-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <path d="M8 21h8M12 17v4"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h2>Desktop (noVNC)</h2>
+          <p class="card-desc">Full Linux desktop with 90s Mac theme</p>
+          <div class="card-meta">
+            <span class="port-badge">:6080</span>
+            <span class="status-indicator" aria-label="status"></span>
+          </div>
+        </div>
+        <a href="/desktop/" class="card-link" target="_blank" rel="noopener" aria-label="Open Desktop">
+          <span class="link-text">Open</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </article>
+
+      <article class="tool-card cli-tool" data-tool="opencode" data-category="ai" data-command="opencode" data-status="installed">
+        <div class="card-icon ai-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M7 8l-4 4 4 4M17 8l4 4-4 4M14 4l-4 16"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h2>OpenCode</h2>
+          <p class="card-desc">AI coding assistant — terminal UI</p>
+          <div class="card-meta">
+            <span class="cli-badge">CLI</span>
+            <code class="cmd">opencode</code>
+          </div>
+        </div>
+        <button class="card-link launch-cli" data-cmd="opencode" aria-label="Launch OpenCode in terminal">
+          <span class="link-text">Launch</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </article>
+
+      <article class="tool-card cli-tool" data-tool="claude-code" data-category="ai" data-command="claude" data-status="installed">
+        <div class="card-icon ai-icon" style="--accent: #8B5CF6">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h2>Claude Code</h2>
+          <p class="card-desc">Anthropic's AI coding agent</p>
+          <div class="card-meta">
+            <span class="cli-badge">CLI</span>
+            <code class="cmd">claude</code>
+          </div>
+        </div>
+        <button class="card-link launch-cli" data-cmd="claude" aria-label="Launch Claude Code in terminal">
+          <span class="link-text">Launch</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </article>
+
+      <article class="tool-card cli-tool" data-tool="gemini-cli" data-category="ai" data-command="gemini" data-status="installed">
+        <div class="card-icon ai-icon" style="--accent: #4285F4">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h2>Gemini CLI</h2>
+          <p class="card-desc">Google's AI assistant for the terminal</p>
+          <div class="card-meta">
+            <span class="cli-badge">CLI</span>
+            <code class="cmd">gemini</code>
+          </div>
+        </div>
+        <button class="card-link launch-cli" data-cmd="gemini" aria-label="Launch Gemini CLI in terminal">
+          <span class="link-text">Launch</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </article>
+
+      <article class="tool-card cli-tool" data-tool="qwen-code" data-category="ai" data-command="qwen" data-status="installed">
+        <div class="card-icon ai-icon" style="--accent: #00897B">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h2>Qwen Code</h2>
+          <p class="card-desc">Alibaba's AI coding assistant</p>
+          <div class="card-meta">
+            <span class="cli-badge">CLI</span>
+            <code class="cmd">qwen</code>
+          </div>
+        </div>
+        <button class="card-link launch-cli" data-cmd="qwen" aria-label="Launch Qwen Code in terminal">
+          <span class="link-text">Launch</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </article>
+
+      <article class="tool-card cli-tool" data-tool="codex-cli" data-category="ai" data-command="codex" data-status="installed">
+        <div class="card-icon ai-icon" style="--accent: #10A37F">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h2>Codex CLI</h2>
+          <p class="card-desc">OpenAI's coding agent</p>
+          <div class="card-meta">
+            <span class="cli-badge">CLI</span>
+            <code class="cmd">codex</code>
+          </div>
+        </div>
+        <button class="card-link launch-cli" data-cmd="codex" aria-label="Launch Codex CLI in terminal">
+          <span class="link-text">Launch</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </article>
+
+      <article class="tool-card cli-tool" data-tool="crush-cli" data-category="ai" data-command="crush" data-status="installed">
+        <div class="card-icon ai-icon" style="--accent: #E91E63">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h2>Crush CLI</h2>
+          <p class="card-desc">Charmbracelet's AI coding agent</p>
+          <div class="card-meta">
+            <span class="cli-badge">CLI</span>
+            <code class="cmd">crush</code>
+          </div>
+        </div>
+        <button class="card-link launch-cli" data-cmd="crush" aria-label="Launch Crush CLI in terminal">
+          <span class="link-text">Launch</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </article>
+
+      <article class="tool-card cli-tool" data-tool="openclaw" data-category="ai" data-command="openclaw" data-status="installed">
+        <div class="card-icon ai-icon" style="--accent: #7C4DFF">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <path d="M22 6l-10 7L2 6"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h2>OpenClaw</h2>
+          <p class="card-desc">Multi-channel AI gateway</p>
+          <div class="card-meta">
+            <span class="cli-badge">CLI</span>
+            <code class="cmd">openclaw</code>
+          </div>
+        </div>
+        <button class="card-link launch-cli" data-cmd="openclaw" aria-label="Launch OpenClaw in terminal">
+          <span class="link-text">Launch</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </article>
+
+      <article class="tool-card cli-tool" data-tool="cline-cli" data-category="ai" data-command="cline-cli" data-status="installed">
+        <div class="card-icon ai-icon" style="--accent: #FF6D00">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h2>Cline CLI</h2>
+          <p class="card-desc">Autonomous coding agent for the terminal</p>
+          <div class="card-meta">
+            <span class="cli-badge">CLI</span>
+            <code class="cmd">cline-cli</code>
+          </div>
+        </div>
+        <button class="card-link launch-cli" data-cmd="cline-cli" aria-label="Launch Cline CLI in terminal">
+          <span class="link-text">Launch</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </article>
+
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="footer-content">
+      <span>Docking Station v1.0</span>
+      <a href="/api/tools" target="_blank" aria-label="Tools API (JSON)">API</a>
+      <a href="/desktop/" target="_blank" aria-label="Open retro desktop">Retro Desktop</a>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

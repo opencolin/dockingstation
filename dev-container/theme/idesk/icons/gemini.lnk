@@ -1,0 +1,9 @@
+table Icon
+  Caption: Gemini CLI
+  Command: xterm -T "Gemini CLI" -fa "Monospace" -fs 12 -bg "#1A237E" -fg "#E8EAF6" -e "cd /workspace && gemini"
+  Icon: /home/devuser/.idesktop/icons/terminal.png
+  Width: 48
+  Height: 48
+  X: 60
+  Y: 440
+end

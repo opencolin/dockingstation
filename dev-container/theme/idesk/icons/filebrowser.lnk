@@ -1,0 +1,9 @@
+table Icon
+  Caption: File Browser
+  Command: xdg-open http://localhost:8443
+  Icon: /home/devuser/.idesktop/icons/filebrowser.png
+  Width: 48
+  Height: 48
+  X: 60
+  Y: 140
+end

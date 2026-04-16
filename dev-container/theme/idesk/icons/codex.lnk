@@ -1,0 +1,9 @@
+table Icon
+  Caption: Codex CLI
+  Command: xterm -T "Codex CLI" -fa "Monospace" -fs 12 -bg "#1B5E20" -fg "#E8F5E9" -e "cd /workspace && codex"
+  Icon: /home/devuser/.idesktop/icons/terminal.png
+  Width: 48
+  Height: 48
+  X: 160
+  Y: 40
+end

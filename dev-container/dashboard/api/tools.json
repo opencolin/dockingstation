@@ -1,0 +1,141 @@
+{
+  "name": "Docking Station",
+  "version": "1.0.0",
+  "description": "Developer container with AI coding tools",
+  "base_image": "ubuntu:22.04",
+  "tools": [
+    {
+      "id": "code-server",
+      "name": "VS Code Web",
+      "description": "Full IDE in the browser via code-server",
+      "category": "editor",
+      "type": "web",
+      "port": 8080,
+      "url": "/code-server/",
+      "command": "code-server",
+      "docs": "https://coder.com/docs/code-server"
+    },
+    {
+      "id": "filebrowser",
+      "name": "File Browser",
+      "description": "Web-based file manager for /workspace",
+      "category": "utility",
+      "type": "web",
+      "port": 8443,
+      "url": "/files/",
+      "command": "filebrowser",
+      "docs": "https://filebrowser.org"
+    },
+    {
+      "id": "novnc",
+      "name": "Desktop (noVNC)",
+      "description": "Full Linux desktop with 90s Mac theme accessible via browser",
+      "category": "utility",
+      "type": "web",
+      "port": 6080,
+      "url": "/desktop/",
+      "command": null,
+      "docs": "https://novnc.com"
+    },
+    {
+      "id": "opencode",
+      "name": "OpenCode",
+      "description": "AI coding assistant with terminal UI",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "opencode",
+      "docs": "https://opencode.ai/docs"
+    },
+    {
+      "id": "claude-code",
+      "name": "Claude Code",
+      "description": "Anthropic's AI coding agent",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "claude",
+      "docs": "https://docs.anthropic.com/en/docs/claude-code"
+    },
+    {
+      "id": "gemini-cli",
+      "name": "Gemini CLI",
+      "description": "Google's AI assistant for the terminal",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "gemini",
+      "docs": "https://github.com/google-gemini/gemini-cli"
+    },
+    {
+      "id": "qwen-code",
+      "name": "Qwen Code",
+      "description": "Alibaba's AI coding assistant",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "qwen",
+      "docs": "https://github.com/QwenLM/qwen-code"
+    },
+    {
+      "id": "codex-cli",
+      "name": "Codex CLI",
+      "description": "OpenAI's coding agent",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "codex",
+      "docs": "https://github.com/openai/codex"
+    },
+    {
+      "id": "crush-cli",
+      "name": "Crush CLI",
+      "description": "Charmbracelet's AI coding agent",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "crush",
+      "docs": "https://github.com/charmbracelet/crush"
+    },
+    {
+      "id": "openclaw",
+      "name": "OpenClaw",
+      "description": "Multi-channel AI gateway with extensible messaging integrations",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "openclaw",
+      "docs": "https://docs.openclaw.ai"
+    },
+    {
+      "id": "cline-cli",
+      "name": "Cline CLI",
+      "description": "Autonomous coding agent for the terminal",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "cline-cli",
+      "docs": "https://docs.cline.bot"
+    }
+  ],
+  "endpoints": {
+    "dashboard": "/",
+    "api": "/api/tools",
+    "desktop": "/desktop/",
+    "code_editor": "/code-server/",
+    "files": "/files/"
+  },
+  "auth": {
+    "method": "basic",
+    "username": "devuser",
+    "note": "Password set via DEV_PASSWORD environment variable"
+  }
+}

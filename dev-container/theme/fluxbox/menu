@@ -1,0 +1,26 @@
+[begin] (Docking Station)
+  [submenu] (Developer Tools) {}
+    [exec] (VS Code Web)      {xterm -T "VS Code Web" -e "echo 'VS Code Web running at http://localhost:8080' && sleep 2"}
+    [exec] (File Browser)     {xterm -T "File Browser" -e "echo 'File Browser running at http://localhost:8443' && sleep 2"}
+    [separator]
+    [exec] (OpenCode)         {xterm -T "OpenCode" -e "cd /workspace && opencode"}
+    [exec] (Claude Code)      {xterm -T "Claude Code" -e "cd /workspace && claude"}
+    [exec] (Gemini CLI)       {xterm -T "Gemini CLI" -e "cd /workspace && gemini"}
+    [exec] (Qwen Code)        {xterm -T "Qwen Code" -e "cd /workspace && qwen"}
+    [exec] (Codex CLI)        {xterm -T "Codex CLI" -e "cd /workspace && codex"}
+    [exec] (Crush CLI)        {xterm -T "Crush CLI" -e "cd /workspace && crush"}
+    [exec] (OpenClaw)         {xterm -T "OpenClaw" -e "cd /workspace && openclaw"}
+    [exec] (Cline CLI)        {xterm -T "Cline CLI" -e "cd /workspace && cline-cli"}
+  [end]
+  [submenu] (System) {}
+    [exec] (Terminal)         {xterm -T "Terminal" -e "cd /workspace && bash"}
+    [exec] (File Manager)     {pcmanfm /workspace}
+    [separator]
+    [exec] (About)            {xterm -T "About This Mac" -hold -e "echo '=== Docking Station ===' && echo '' && echo 'Developer Container v1.0' && echo 'Ubuntu 22.04 LTS' && echo '' && echo 'Built with love and nostalgia.' && echo '' && uname -a"}
+  [end]
+  [separator]
+  [config] (Configuration)
+  [workspaces] (Workspaces)
+  [separator]
+  [restart] (Restart Fluxbox)
+[end]

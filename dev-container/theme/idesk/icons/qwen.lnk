@@ -1,0 +1,9 @@
+table Icon
+  Caption: Qwen Code
+  Command: xterm -T "Qwen Code" -fa "Monospace" -fs 12 -bg "#004D40" -fg "#E0F2F1" -e "cd /workspace && qwen"
+  Icon: /home/devuser/.idesktop/icons/terminal.png
+  Width: 48
+  Height: 48
+  X: 60
+  Y: 540
+end

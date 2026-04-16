@@ -1,0 +1,9 @@
+table Icon
+  Caption: Claude Code
+  Command: xterm -T "Claude Code" -fa "Monospace" -fs 12 -bg "#2D1B69" -fg "#F0E6FF" -e "cd /workspace && claude"
+  Icon: /home/devuser/.idesktop/icons/terminal.png
+  Width: 48
+  Height: 48
+  X: 60
+  Y: 340
+end

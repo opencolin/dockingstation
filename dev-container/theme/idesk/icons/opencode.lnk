@@ -1,0 +1,9 @@
+table Icon
+  Caption: OpenCode
+  Command: xterm -T "OpenCode" -fa "Monospace" -fs 12 -bg "#FFFFCC" -fg "#000000" -e "cd /workspace && opencode"
+  Icon: /home/devuser/.idesktop/icons/terminal.png
+  Width: 48
+  Height: 48
+  X: 60
+  Y: 240
+end
