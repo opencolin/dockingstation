@@ -214,6 +214,17 @@
       "docs": "https://github.com/plandex-ai/plandex"
     },
     {
+      "id": "continue",
+      "name": "Continue",
+      "description": "Source-controlled AI checks, enforceable in CI (32K+ stars)",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "cn",
+      "docs": "https://continue.dev"
+    },
+    {
       "id": "kiro-cli",
       "name": "Kiro CLI",
       "description": "AWS's spec-driven agentic coding from the terminal",
