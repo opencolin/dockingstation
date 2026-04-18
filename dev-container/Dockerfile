@@ -38,6 +38,8 @@ RUN apt-get update && \
         feh \
         xdg-utils \
         fonts-dejavu-core \
+        bzip2 \
+        unzip \
     && mkdir -p /etc/apt/keyrings \
     && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key \
         | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
@@ -101,10 +103,75 @@ RUN npm install -g @yaegaki/cline-cli
 # ----------------------------------------------------------------------
 RUN curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash
 
+# ==============================================================================
+# NEW TOOLS — Tier 1 (tbench top performers + high adoption)
+# ==============================================================================
+
 # ----------------------------------------------------------------------
+# ForgeCode (#1 on tbench v2.0 — 81.8%)
+# ----------------------------------------------------------------------
+RUN curl -fsSL https://forgecode.dev/cli | sh
+
+# ----------------------------------------------------------------------
+# Goose (Block/Square — 41K stars, MCP-native, Stripe forked this)
+# ----------------------------------------------------------------------
+RUN mkdir -p /root/.local/bin && \
+    curl -fsSL https://github.com/block/goose/releases/download/stable/goose-aarch64-unknown-linux-gnu.tar.bz2 -o /tmp/goose.tar.bz2 && \
+    tar -xjf /tmp/goose.tar.bz2 -C /root/.local/bin && \
+    chmod +x /root/.local/bin/goose && \
+    rm /tmp/goose.tar.bz2
+
+# ----------------------------------------------------------------------
+# Aider (30K+ stars — most popular OSS AI pair programmer)
+# ----------------------------------------------------------------------
+RUN pip3 install --no-cache-dir aider-chat
+
+# ----------------------------------------------------------------------
+# GitHub Copilot CLI (GA agentic terminal agent)
+# ----------------------------------------------------------------------
+RUN npm install -g @github/copilot
+
+# ----------------------------------------------------------------------
+# Droid / Factory AI (#6 on tbench v2.0 — 77.3%)
+# ----------------------------------------------------------------------
+RUN curl -fsSL https://app.factory.ai/cli | sh
+
+# ==============================================================================
+# NEW TOOLS — Tier 2 (minions research + proven frameworks)
+# ==============================================================================
+
+# ----------------------------------------------------------------------
+# Amp (Sourcegraph, formerly Cody — multi-repo aware)
+# ----------------------------------------------------------------------
+RUN npm install -g @sourcegraph/amp
+
+# ----------------------------------------------------------------------
+# Amazon Q Developer CLI
+# ----------------------------------------------------------------------
+RUN wget -q https://desktop-release.q.us-east-1.amazonaws.com/latest/amazon-q.deb -O /tmp/amazon-q.deb && \
+    dpkg -i /tmp/amazon-q.deb || apt-get install -f -y && \
+    rm /tmp/amazon-q.deb
+
+# ----------------------------------------------------------------------
+# Plandex (multi-step task planner, closest to Stripe blueprints)
+# ----------------------------------------------------------------------
+RUN curl -sL https://plandex.ai/install.sh | bash
+
+# ----------------------------------------------------------------------
+# SWE-agent + OpenHands: skipped — require Docker-in-Docker at runtime
+# ----------------------------------------------------------------------
+
+# ----------------------------------------------------------------------
+# Kiro CLI (AWS — spec-driven agentic coding)
+# ----------------------------------------------------------------------
+RUN curl -fsSL https://cli.kiro.dev/install | bash
+
+# ==============================================================================
 # Symlink tools to /usr/local/bin for PATH accessibility
-# ----------------------------------------------------------------------
-RUN ln -sf /root/.opencode/bin/opencode /usr/local/bin/opencode
+# ==============================================================================
+RUN ln -sf /root/.opencode/bin/opencode /usr/local/bin/opencode && \
+    (which forge >/dev/null 2>&1 || ln -sf /root/.forge/bin/forge /usr/local/bin/forge 2>/dev/null || true) && \
+    (which goose >/dev/null 2>&1 || ln -sf /root/.goose/bin/goose /usr/local/bin/goose 2>/dev/null || true)
 
 # ----------------------------------------------------------------------
 # Create user, workspace, and directory structure

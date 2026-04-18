@@ -1,6 +1,6 @@
 {
   "name": "Docking Station",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Developer container with AI coding tools",
   "base_image": "ubuntu:22.04",
   "tools": [
@@ -124,6 +124,105 @@
       "url": null,
       "command": "cline-cli",
       "docs": "https://docs.cline.bot"
+    },
+    {
+      "id": "forgecode",
+      "name": "ForgeCode",
+      "description": "#1 on terminal-bench v2.0 (81.8%) — multi-model AI coding agent with TUI",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "forge",
+      "docs": "https://forgecode.dev"
+    },
+    {
+      "id": "goose",
+      "name": "Goose",
+      "description": "MCP-native coding agent by Block with 70+ extensions",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "goose",
+      "docs": "https://github.com/block/goose"
+    },
+    {
+      "id": "aider",
+      "name": "Aider",
+      "description": "AI pair programming — edits files directly in your git repo",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "aider",
+      "docs": "https://aider.chat"
+    },
+    {
+      "id": "copilot-cli",
+      "name": "GitHub Copilot CLI",
+      "description": "GitHub's agentic coding agent for the terminal",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "github-copilot-cli",
+      "docs": "https://docs.github.com/en/copilot/using-github-copilot/using-github-copilot-in-the-command-line"
+    },
+    {
+      "id": "droid",
+      "name": "Droid",
+      "description": "Factory AI's terminal agent — #6 on terminal-bench v2.0 (77.3%)",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "droid",
+      "docs": "https://factory.ai"
+    },
+    {
+      "id": "amp",
+      "name": "Amp",
+      "description": "Sourcegraph's multi-repo agentic coding tool (formerly Cody)",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "amp",
+      "docs": "https://ampcode.com"
+    },
+    {
+      "id": "amazon-q",
+      "name": "Amazon Q CLI",
+      "description": "AWS-integrated AI coding and cloud agent",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "q",
+      "docs": "https://docs.aws.amazon.com/amazonq"
+    },
+    {
+      "id": "plandex",
+      "name": "Plandex",
+      "description": "Multi-step task planner with diff management for complex changes",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "plandex",
+      "docs": "https://github.com/plandex-ai/plandex"
+    },
+    {
+      "id": "kiro-cli",
+      "name": "Kiro CLI",
+      "description": "AWS's spec-driven agentic coding from the terminal",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "kiro",
+      "docs": "https://kiro.dev"
     }
   ],
   "endpoints": {
