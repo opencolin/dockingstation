@@ -40,6 +40,8 @@ RUN apt-get update && \
         fonts-dejavu-core \
         bzip2 \
         unzip \
+        build-essential \
+        python3-dev \
     && mkdir -p /etc/apt/keyrings \
     && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key \
         | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
@@ -170,6 +172,40 @@ RUN npm install -g @continuedev/cli
 # Kiro CLI (AWS — spec-driven agentic coding)
 # ----------------------------------------------------------------------
 RUN curl -fsSL https://cli.kiro.dev/install | bash
+
+# ----------------------------------------------------------------------
+# Junie CLI (JetBrains' AI coding agent)
+# ----------------------------------------------------------------------
+RUN curl -fsSL https://junie.jetbrains.com/install.sh | bash
+
+# ----------------------------------------------------------------------
+# Letta Code (memory-first coding agent)
+# ----------------------------------------------------------------------
+RUN npm install -g @letta-ai/letta-code
+
+# ----------------------------------------------------------------------
+# iFlow CLI (multi-model AI coding agent)
+# ----------------------------------------------------------------------
+RUN npm install -g @iflow-ai/iflow-cli
+
+# ----------------------------------------------------------------------
+# Qoder CLI (AI coding assistant)
+# ----------------------------------------------------------------------
+RUN npm install -g @qoder-ai/qodercli
+
+# ----------------------------------------------------------------------
+# Chaterm (AI terminal for infrastructure — Electron, .deb)
+# ----------------------------------------------------------------------
+RUN wget -q "https://github.com/chaterm/Chaterm/releases/latest/download/chaterm-0.10.1-linux-amd64.deb" -O /tmp/chaterm.deb && \
+    dpkg -i /tmp/chaterm.deb 2>/dev/null || apt-get install -f -y && \
+    rm -f /tmp/chaterm.deb || true
+
+# ----------------------------------------------------------------------
+# Apex2 (Terminal-Bench #1 v1.0 — research agent)
+# ----------------------------------------------------------------------
+RUN pip3 install --no-cache-dir apex2-agent 2>/dev/null || \
+    (git clone --depth 1 https://github.com/heartyguy/Apex2-Terminal-Bench-Agent.git /opt/apex2 && \
+     cd /opt/apex2 && pip3 install --no-cache-dir -r requirements.txt 2>/dev/null || true)
 
 # ==============================================================================
 # Symlink tools to /usr/local/bin for PATH accessibility

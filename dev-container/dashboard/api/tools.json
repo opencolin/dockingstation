@@ -235,6 +235,72 @@
       "command": "kiro",
       "docs": "https://kiro.dev"
     }
+    {
+      "id": "junie",
+      "name": "Junie CLI",
+      "description": "JetBrains' AI coding agent for the terminal",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "junie",
+      "docs": "https://junie.jetbrains.com"
+    },
+    {
+      "id": "letta-code",
+      "name": "Letta Code",
+      "description": "Memory-first AI coding agent",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "letta",
+      "docs": "https://github.com/letta-ai/letta-code"
+    },
+    {
+      "id": "iflow-cli",
+      "name": "iFlow CLI",
+      "description": "Multi-model AI coding agent with free access to Kimi, Qwen, DeepSeek",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "iflow",
+      "docs": "https://github.com/iflow-ai/iflow-cli"
+    }
+    {
+      "id": "qoder",
+      "name": "Qoder CLI",
+      "description": "AI coding assistant — build and code in your terminal",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "qoder",
+      "docs": "https://qoder.com"
+    },
+    {
+      "id": "chaterm",
+      "name": "Chaterm",
+      "description": "AI terminal for cloud and infrastructure management",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "chaterm",
+      "docs": "https://chaterm.ai"
+    },
+    {
+      "id": "apex2",
+      "name": "Apex2",
+      "description": "Terminal-Bench #1 (v1.0) — research coding agent from heartyguy",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "apex2",
+      "docs": "https://github.com/heartyguy/Apex2-Terminal-Bench-Agent"
+    }
   ],
   "endpoints": {
     "dashboard": "/",
