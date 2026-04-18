@@ -1,0 +1,54 @@
+---
+title: Development Environment
+description: "VS Code Web, File Browser, and a full Linux desktop."
+---
+
+# Development Environment
+
+Beyond the 22 AI agents, Docking Station includes three web-accessible development tools.
+
+## VS Code Web
+
+<Card title="code-server" icon="code">
+  Full Visual Studio Code running in the browser via [code-server](https://coder.com/docs/code-server).
+</Card>
+
+- **URL:** `/code-server/` (via auth proxy) or `http://host:8080` (direct)
+- **Port:** 8080
+- **Auth:** Disabled (nginx handles auth)
+- **Workspace:** Opens to `/workspace` by default
+
+Supports extensions, terminals, debugging, and everything you'd expect from VS Code. The integrated terminal gives you direct access to all 22 AI agents.
+
+## File Browser
+
+<Card title="filebrowser" icon="folder-open">
+  Web-based file manager for uploading, downloading, and editing files in `/workspace`.
+</Card>
+
+- **URL:** `/files/` (via auth proxy) or `http://host:8443` (direct)
+- **Port:** 8443
+- **Root:** `/workspace`
+
+Upload project files, browse the workspace, edit configs — all from the browser.
+
+## Linux Desktop (noVNC)
+
+<Card title="noVNC + Fluxbox" icon="desktop">
+  Full Linux GUI desktop accessible via any browser. Themed with a 1990s Macintosh aesthetic.
+</Card>
+
+- **URL:** `/desktop/` (via auth proxy) or `http://host:6080` (direct)
+- **Port:** 6080 (WebSocket), 5900 (raw VNC)
+- **Window Manager:** Fluxbox with custom Mac Classic theme
+- **Desktop Icons:** idesk with launchers for every tool
+
+The desktop includes:
+- Right-click menu with all tools organized by category
+- Desktop icons for quick tool access
+- Platinum gray window chrome and Mac OS-style toolbar
+- Teal/purple wallpaper with noise texture
+
+<Tip>
+  The desktop is optional. Most users prefer the web dashboard + VS Code Web. The desktop is useful when you need a full GUI environment or want to run graphical tools.
+</Tip>

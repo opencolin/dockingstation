@@ -1,0 +1,63 @@
+---
+title: Nightly Builds
+description: "Automated rebuilds with the latest tool versions."
+---
+
+# Nightly Builds
+
+A GitHub Actions workflow rebuilds the Docker image every night, ensuring all 25 tools are at their latest versions.
+
+## Schedule
+
+- **Time:** 02:00 UTC daily
+- **Trigger:** Cron schedule + manual `workflow_dispatch`
+- **Platforms:** `linux/amd64` and `linux/arm64`
+- **Registry:** GitHub Container Registry (ghcr.io)
+
+## Image Tags
+
+Each build produces three tags:
+
+| Tag | Example | Purpose |
+|-----|---------|---------|
+| `latest` | `latest` | Always the newest build |
+| Date | `2026-04-18` | Reproducibility — pin to a specific day |
+| SHA | `abc1234` | Traceability — link back to the exact commit |
+
+## Workflow
+
+```yaml
+name: Nightly Build
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+      - uses: docker/build-push-action@v6
+        with:
+          context: ./dev-container
+          push: true
+          platforms: linux/amd64,linux/arm64
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+```
+
+## Why Nightly?
+
+AI coding tools move fast. New releases ship weekly across 22 tools. Nightly builds ensure:
+
+- **Security patches** are applied within 24 hours
+- **New features** are available without manual intervention
+- **Breaking changes** are caught early by the build pipeline
+- **Date-tagged images** let you roll back if a tool update breaks something
+
+<Tip>
+  For production stability, pin to a date-tagged image (e.g., `dockingstation:2026-04-18`) instead of `latest`.
+</Tip>

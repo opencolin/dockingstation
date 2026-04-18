@@ -1,0 +1,49 @@
+---
+title: API Overview
+description: "Machine-readable tool discovery for agents and automation."
+---
+
+# API Overview
+
+Docking Station exposes a JSON API for programmatic tool discovery. This is designed for AI agent orchestration, CI/CD pipelines, and automation scripts.
+
+## Base URL
+
+```
+http://your-server:8888/api/
+```
+
+All API endpoints require HTTP Basic Auth (`devuser` / your password).
+
+## Endpoints
+
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/api/tools.json` | Complete tool manifest with metadata |
+
+## Authentication
+
+```bash
+curl -u devuser:$PASSWORD http://your-server:8888/api/tools.json
+```
+
+## CORS
+
+The API includes permissive CORS headers (`Access-Control-Allow-Origin: *`) for cross-origin access from browser-based agents.
+
+## Use Cases
+
+<CardGroup cols={2}>
+  <Card title="Agent Orchestration" icon="robot">
+    An orchestrator agent can discover available tools, check their types (web vs CLI), and invoke them programmatically.
+  </Card>
+  <Card title="CI/CD Integration" icon="gear">
+    Pipeline scripts can query the API to verify tools are available before running agent-based tasks.
+  </Card>
+  <Card title="Monitoring" icon="chart-line">
+    Health check scripts can poll the API and cross-reference with service status.
+  </Card>
+  <Card title="Dynamic UIs" icon="browser">
+    Custom dashboards can render tool lists dynamically from the API response.
+  </Card>
+</CardGroup>

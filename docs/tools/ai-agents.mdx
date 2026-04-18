@@ -1,0 +1,188 @@
+---
+title: AI Coding Agents
+description: "22 AI coding agents from every major provider."
+---
+
+# AI Coding Agents
+
+Every agent is pre-installed and available from the terminal inside the container. Launch them from the web dashboard or via `xterm` in the noVNC desktop.
+
+## Tier 1 — Top Benchmark Performers
+
+These tools rank highest on [terminal-bench](https://www.tbench.ai), the Stanford x Laude benchmark for terminal coding agents.
+
+<AccordionGroup>
+  <Accordion title="ForgeCode — #1 on terminal-bench v2.0 (81.8%)" icon="hammer">
+    **Command:** `forge`
+    **Provider:** TailCall
+    **Install:** `curl -fsSL https://forgecode.dev/cli | sh`
+
+    Multi-model AI coding agent with a beautiful TUI. Supports 300+ models across Claude, GPT, Gemini, Grok, DeepSeek, and more. Three modes: interactive TUI, one-shot CLI, and ZSH plugin.
+
+    [Documentation](https://forgecode.dev) | [GitHub](https://github.com/tailcallhq/forgecode)
+  </Accordion>
+
+  <Accordion title="Droid — #6 on terminal-bench v2.0 (77.3%)" icon="robot">
+    **Command:** `droid`
+    **Provider:** Factory AI
+    **Install:** `curl -fsSL https://app.factory.ai/cli | sh`
+
+    Factory AI's terminal-based coding agent. Consistent top performer across both v1.0 and v2.0 benchmarks.
+
+    [Documentation](https://factory.ai)
+  </Accordion>
+
+  <Accordion title="Apex2 — #1 on terminal-bench v1.0 (64.5%)" icon="star">
+    **Provider:** heartyguy (research)
+    **Type:** Research agent (Python)
+
+    Achieved state-of-the-art performance through strategic simplification. Built as a weekend project, demonstrates that architecture beats complexity.
+
+    [GitHub](https://github.com/heartyguy/Apex2-Terminal-Bench-Agent)
+  </Accordion>
+</AccordionGroup>
+
+## Major Provider Agents
+
+<AccordionGroup>
+  <Accordion title="Claude Code (Anthropic)" icon="brain">
+    **Command:** `claude`
+    **Install:** `npm install -g @anthropic-ai/claude-code`
+
+    Anthropic's official agentic coding tool. Reads your codebase, writes code, runs commands, and iterates on test failures. Deep integration with the Claude model family.
+
+    [Documentation](https://docs.anthropic.com/en/docs/claude-code)
+  </Accordion>
+
+  <Accordion title="Gemini CLI (Google)" icon="google">
+    **Command:** `gemini`
+    **Install:** `npm install -g @google/gemini-cli`
+
+    Google's AI assistant for the terminal with deep Google Cloud and Workspace integration.
+
+    [Documentation](https://github.com/google-gemini/gemini-cli)
+  </Accordion>
+
+  <Accordion title="Codex CLI (OpenAI)" icon="microchip">
+    **Command:** `codex`
+    **Install:** `npm install -g @openai/codex`
+
+    OpenAI's autonomous coding agent.
+
+    [Documentation](https://github.com/openai/codex)
+  </Accordion>
+
+  <Accordion title="GitHub Copilot CLI" icon="github">
+    **Command:** `copilot`
+    **Install:** `npm install -g @github/copilot`
+
+    GitHub's agentic coding agent for the terminal. Plan mode and autopilot mode.
+
+    [Documentation](https://docs.github.com/en/copilot)
+  </Accordion>
+
+  <Accordion title="Amazon Q CLI (AWS)" icon="aws">
+    **Command:** `q`
+
+    AWS-integrated AI coding and cloud agent. Natural language to AWS API calls.
+
+    [Documentation](https://docs.aws.amazon.com/amazonq)
+  </Accordion>
+
+  <Accordion title="Junie CLI (JetBrains)" icon="j">
+    **Command:** `junie`
+    **Install:** `curl -fsSL https://junie.jetbrains.com/install.sh | bash`
+
+    JetBrains' AI coding agent for the terminal. Public beta.
+
+    [Documentation](https://junie.jetbrains.com)
+  </Accordion>
+</AccordionGroup>
+
+## Open Source Agents
+
+<AccordionGroup>
+  <Accordion title="Goose (Block)" icon="feather">
+    **Command:** `goose`
+    **Stars:** 41K
+
+    MCP-native coding agent with 70+ extensions. Block (Square) built it; Stripe forked it for their internal Minions system.
+
+    [GitHub](https://github.com/block/goose)
+  </Accordion>
+
+  <Accordion title="Aider" icon="users">
+    **Command:** `aider`
+    **Stars:** 30K+
+    **Install:** `pip install aider-chat`
+
+    Most popular open-source AI pair programmer. Edits files directly in your git repo via chat. Git-native — understands your repo history.
+
+    [Documentation](https://aider.chat) | [GitHub](https://github.com/Aider-AI/aider)
+  </Accordion>
+
+  <Accordion title="Crush CLI (Charmbracelet)" icon="heart">
+    **Command:** `crush`
+
+    Beautiful TUI-based AI coding agent from the Charm team (makers of bubbletea, gum, etc.).
+
+    [GitHub](https://github.com/charmbracelet/crush)
+  </Accordion>
+
+  <Accordion title="Amp (Sourcegraph)" icon="bolt">
+    **Command:** `amp`
+    **Install:** `npm install -g @sourcegraph/amp`
+
+    Multi-repo aware agentic coding tool, formerly known as Cody. Enterprise pedigree from Sourcegraph.
+
+    [Documentation](https://ampcode.com)
+  </Accordion>
+
+  <Accordion title="OpenCode" icon="code">
+    **Command:** `opencode`
+    **Stars:** 142K
+
+    Provider-agnostic AI coding assistant with GitHub agent mode.
+
+    [Documentation](https://opencode.ai/docs)
+  </Accordion>
+
+  <Accordion title="Plandex" icon="list-check">
+    **Command:** `plandex`
+    **Install:** `curl -sL https://plandex.ai/install.sh | bash`
+
+    Multi-step task planner with diff management. Closest open-source analog to Stripe's blueprint pattern.
+
+    [GitHub](https://github.com/plandex-ai/plandex)
+  </Accordion>
+
+  <Accordion title="Letta Code" icon="brain">
+    **Command:** `letta`
+    **Install:** `npm install -g @letta-ai/letta-code`
+
+    Memory-first AI coding agent. Maintains persistent memory across sessions.
+
+    [GitHub](https://github.com/letta-ai/letta-code)
+  </Accordion>
+
+  <Accordion title="iFlow CLI" icon="wave-pulse">
+    **Command:** `iflow`
+    **Install:** `npm install -g @iflow-ai/iflow-cli`
+
+    Multi-model AI agent with free access to Kimi K2, Qwen3, GLM, and DeepSeek.
+
+    [GitHub](https://github.com/iflow-ai/iflow-cli)
+  </Accordion>
+</AccordionGroup>
+
+## Additional Agents
+
+| Tool | Command | Description |
+|------|---------|-------------|
+| Qwen Code | `qwen` | Alibaba's AI coding assistant |
+| Kiro CLI | `kiro-cli` | AWS's spec-driven agentic coding |
+| Continue | `cn` | Source-controlled AI checks, enforceable in CI |
+| Qoder CLI | `qoder` | AI coding assistant |
+| Cline CLI | `cline-cli` | Autonomous terminal agent |
+| OpenClaw | `openclaw` | Multi-channel AI gateway |
+| Chaterm | `chaterm` | AI terminal for cloud infrastructure |

@@ -1,0 +1,67 @@
+---
+title: Configuration
+description: "Environment variables, ports, and persistent storage."
+---
+
+## Environment Variables
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `DEV_PASSWORD` | Yes | Password for HTTP basic auth (username is always `devuser`) |
+| `ANTHROPIC_API_KEY` | No | API key for Claude Code |
+| `OPENAI_API_KEY` | No | API key for Codex CLI, Aider |
+| `GOOGLE_API_KEY` | No | API key for Gemini CLI |
+| `AWS_ACCESS_KEY_ID` | No | AWS credentials for Amazon Q CLI |
+| `AWS_SECRET_ACCESS_KEY` | No | AWS credentials for Amazon Q CLI |
+| `GITHUB_TOKEN` | No | Token for GitHub Copilot CLI |
+
+<Info>
+  Each AI tool reads its own environment variables. Check the tool's documentation for the specific variable names it expects.
+</Info>
+
+## Ports
+
+| Port | Service | Description |
+|------|---------|-------------|
+| **80** | nginx | Primary entry point — dashboard + auth proxy |
+| 6080 | noVNC | Linux desktop (direct, no auth) |
+| 8080 | code-server | VS Code Web (direct, no auth) |
+| 8443 | File Browser | File manager (direct, no auth) |
+| 5900 | VNC | Raw VNC protocol (direct, no auth) |
+
+<Warning>
+  In production, only expose port 80. All other ports bypass authentication when accessed directly.
+</Warning>
+
+## Persistent Storage
+
+The `/workspace` directory inside the container is designed to be mounted as a Docker volume:
+
+```bash
+-v dockingstation-workspace:/workspace
+```
+
+This persists across container restarts and upgrades:
+- Your code and project files
+- Tool configuration files
+- Shell history
+- Git credentials (if configured)
+
+## Authentication
+
+Authentication uses HTTP Basic Auth via nginx. The username is always `devuser`. The password is set at container startup via the `DEV_PASSWORD` environment variable.
+
+All routes behind nginx require authentication:
+- `/` — Dashboard
+- `/api/*` — JSON API
+- `/code-server/` — VS Code Web
+- `/files/` — File Browser
+- `/desktop/` — noVNC Desktop
+
+## Custom nginx Configuration
+
+The nginx config is generated at startup in `/etc/nginx/sites-enabled/default`. To customize, mount your own config:
+
+```bash
+-v ./my-nginx.conf:/etc/nginx/sites-enabled/default:ro
+```

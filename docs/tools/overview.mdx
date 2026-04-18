@@ -1,0 +1,60 @@
+---
+title: Tools Overview
+description: "25 tools across 3 categories."
+---
+
+# Tools Overview
+
+Docking Station ships with **25 tools** organized into three categories:
+
+<CardGroup cols={3}>
+  <Card title="22 AI Agents" icon="robot" href="/tools/ai-agents">
+    Terminal-based AI coding assistants from every major provider
+  </Card>
+  <Card title="3 Web Services" icon="browser" href="/tools/development-environment">
+    VS Code Web, File Browser, and a full Linux Desktop
+  </Card>
+  <Card title="Benchmarked" icon="ranking-star" href="/tools/benchmarks">
+    Top performers from the terminal-bench leaderboard
+  </Card>
+</CardGroup>
+
+## All Tools at a Glance
+
+| # | Tool | Provider | Command | Category |
+|---|------|----------|---------|----------|
+| 1 | ForgeCode | TailCall | `forge` | AI Agent |
+| 2 | Claude Code | Anthropic | `claude` | AI Agent |
+| 3 | Gemini CLI | Google | `gemini` | AI Agent |
+| 4 | Codex CLI | OpenAI | `codex` | AI Agent |
+| 5 | GitHub Copilot CLI | GitHub | `copilot` | AI Agent |
+| 6 | Droid | Factory AI | `droid` | AI Agent |
+| 7 | Goose | Block | `goose` | AI Agent |
+| 8 | Aider | Aider | `aider` | AI Agent |
+| 9 | Crush CLI | Charmbracelet | `crush` | AI Agent |
+| 10 | Amp | Sourcegraph | `amp` | AI Agent |
+| 11 | Junie CLI | JetBrains | `junie` | AI Agent |
+| 12 | OpenCode | OpenCode | `opencode` | AI Agent |
+| 13 | Qwen Code | Alibaba | `qwen` | AI Agent |
+| 14 | Amazon Q CLI | AWS | `q` | AI Agent |
+| 15 | Plandex | Plandex | `plandex` | AI Agent |
+| 16 | Kiro CLI | AWS | `kiro-cli` | AI Agent |
+| 17 | Continue | Continue | `cn` | AI Agent |
+| 18 | Letta Code | Letta AI | `letta` | AI Agent |
+| 19 | iFlow CLI | iFlow | `iflow` | AI Agent |
+| 20 | Qoder CLI | Qoder | `qoder` | AI Agent |
+| 21 | Cline CLI | Cline | `cline-cli` | AI Agent |
+| 22 | OpenClaw | OpenClaw | `openclaw` | AI Agent |
+| 23 | VS Code Web | Coder | `code-server` | Web Service |
+| 24 | File Browser | File Browser | `filebrowser` | Web Service |
+| 25 | Linux Desktop | noVNC + Fluxbox | — | Web Service |
+
+## How Tools Are Installed
+
+Tools are installed using their native package managers to ensure you always get the latest versions at build time:
+
+- **npm** — Claude Code, Gemini, Codex, Copilot, Amp, Qwen, Continue, Letta, iFlow, Qoder, Cline, OpenClaw
+- **pip** — Aider
+- **apt** — Crush (via Charmbracelet repo)
+- **curl/binary** — ForgeCode, Goose, Droid, OpenCode, Plandex, Kiro, Junie, code-server, File Browser
+- **deb** — Amazon Q, Chaterm

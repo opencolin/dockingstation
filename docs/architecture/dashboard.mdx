@@ -1,0 +1,65 @@
+---
+title: Web Dashboard
+description: "A modern dashboard for humans and a JSON API for agents."
+---
+
+# Web Dashboard
+
+The dashboard serves two audiences: humans get a visual launcher, agents get semantic HTML and a structured JSON API.
+
+## For Humans
+
+The landing page at `/` is a dark-themed, card-based dashboard:
+
+- **25 tool cards** with unique SVG icons and accent colors
+- **Live health indicators** — green/red dots showing service status
+- **Category filters** — All, Editors, AI Assistants, Utilities
+- **One-click launch** for web tools (VS Code, File Browser, Desktop)
+- **Staggered animations** for a polished load experience
+
+### Tech Stack
+
+The dashboard is 3 static files with zero dependencies:
+
+| File | Purpose | Size |
+|------|---------|------|
+| `index.html` | Semantic HTML with `data-*` attributes | ~15KB |
+| `style.css` | CSS custom properties, grid layout, animations | ~6KB |
+| `app.js` | Health checks, filters, CLI launchers | ~2KB |
+
+No framework. No build step. No npm. Served directly by nginx.
+
+## For Agents
+
+### Semantic HTML
+
+Every tool card has machine-readable `data-*` attributes:
+
+```html
+<article class="tool-card"
+  data-tool="claude-code"
+  data-category="ai"
+  data-command="claude"
+  data-port="null"
+  data-status="up">
+```
+
+An agent can parse the dashboard HTML and extract tool information without needing the JSON API.
+
+### JSON-LD
+
+The page includes a `<script type="application/ld+json">` block with Schema.org WebApplication metadata.
+
+### JSON API
+
+See [API Reference](/api/overview) for the machine-readable `/api/tools.json` endpoint.
+
+## Health Checks
+
+The dashboard runs client-side health checks every 30 seconds:
+
+1. Sends `HEAD` requests to web service URLs (`/code-server/`, `/files/`, `/desktop/`)
+2. Updates `data-status` attributes on cards (`up` / `down`)
+3. Updates the global status indicator in the header
+
+CLI tools are always marked as `up` (installed = available).

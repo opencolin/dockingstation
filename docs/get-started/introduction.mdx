@@ -1,0 +1,61 @@
+---
+title: Introduction
+description: "One container. 25 AI coding tools. Ready in 30 seconds."
+---
+
+# What is Docking Station?
+
+Docking Station is a self-hosted developer environment that bundles **every major AI coding agent** into a single Docker container. It ships with a web dashboard for humans and a JSON API for automation — all behind password-protected access.
+
+<CardGroup cols={2}>
+  <Card title="25 Tools" icon="toolbox">
+    22 AI coding agents + VS Code Web + File Browser + Linux Desktop
+  </Card>
+  <Card title="One Command" icon="terminal">
+    `docker run` and you're live. No orchestration, no dependencies.
+  </Card>
+  <Card title="Two Interfaces" icon="browser">
+    Web dashboard for humans, JSON API for agents and CI/CD.
+  </Card>
+  <Card title="Nightly Builds" icon="clock">
+    GitHub Actions rebuilds every night with the latest tool versions.
+  </Card>
+</CardGroup>
+
+## The Problem
+
+Your engineering team wants to evaluate AI coding tools. Today that means:
+
+- Installing 20+ CLI tools on every developer machine, each with different runtimes
+- Managing API keys across Anthropic, Google, OpenAI, JetBrains, AWS, and more
+- No way to standardize or compare tools — every developer has a different setup
+- Security headaches with API keys scattered across personal laptops
+- New hires wait hours setting up before writing a single line of code
+
+## The Solution
+
+```bash
+docker run -d -p 8888:80 -e DEV_PASSWORD=securepwd \
+  -v workspace:/workspace dockingstation
+```
+
+Open `http://your-server:8888`. Log in. Start coding with any AI tool.
+
+That's it.
+
+## Who is it for?
+
+<AccordionGroup>
+  <Accordion title="Engineering Teams">
+    Standardize your AI tooling. Every developer gets the same environment with the same tools, instantly. Compare agents side-by-side on real work.
+  </Accordion>
+  <Accordion title="Platform Engineers">
+    One container to deploy and manage. Persistent workspace volume, nightly auto-updates, password auth built in. Drop it on any VM with Docker.
+  </Accordion>
+  <Accordion title="AI Agent Developers">
+    The JSON API at `/api/tools.json` lets your orchestration layer discover and invoke tools programmatically. Semantic HTML + structured JSON — built for both human and machine consumers.
+  </Accordion>
+  <Accordion title="Evaluators & Researchers">
+    Includes top performers from the [terminal-bench](https://www.tbench.ai) leaderboard. Run benchmarks against multiple agents in the same environment.
+  </Accordion>
+</AccordionGroup>

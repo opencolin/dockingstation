@@ -1,0 +1,115 @@
+---
+title: GET /api/tools.json
+description: "Returns the complete tool manifest."
+api: "GET /api/tools.json"
+---
+
+# GET /api/tools.json
+
+Returns a complete manifest of all tools installed in the container, including metadata for programmatic discovery.
+
+## Request
+
+```bash
+curl -u devuser:$PASSWORD http://your-server:8888/api/tools.json
+```
+
+## Response
+
+```json
+{
+  "name": "Docking Station",
+  "version": "2.0.0",
+  "description": "Developer container with AI coding tools",
+  "base_image": "ubuntu:22.04",
+  "tools": [
+    {
+      "id": "claude-code",
+      "name": "Claude Code",
+      "description": "Anthropic's AI coding agent",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "claude",
+      "docs": "https://docs.anthropic.com/en/docs/claude-code"
+    },
+    {
+      "id": "code-server",
+      "name": "VS Code Web",
+      "description": "Full IDE in the browser via code-server",
+      "category": "editor",
+      "type": "web",
+      "port": 8080,
+      "url": "/code-server/",
+      "command": "code-server",
+      "docs": "https://coder.com/docs/code-server"
+    }
+  ],
+  "endpoints": {
+    "dashboard": "/",
+    "api": "/api/tools",
+    "desktop": "/desktop/",
+    "code_editor": "/code-server/",
+    "files": "/files/"
+  },
+  "auth": {
+    "method": "basic",
+    "username": "devuser",
+    "note": "Password set via DEV_PASSWORD environment variable"
+  }
+}
+```
+
+## Tool Object Schema
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | string | Unique identifier |
+| `name` | string | Display name |
+| `description` | string | One-line description |
+| `category` | string | `"ai"`, `"editor"`, or `"utility"` |
+| `type` | string | `"cli"` (terminal) or `"web"` (browser-accessible) |
+| `port` | number \| null | Port number for web tools, null for CLI tools |
+| `url` | string \| null | URL path for web tools (e.g., `/code-server/`) |
+| `command` | string \| null | Shell command to invoke the tool |
+| `docs` | string | Documentation URL |
+
+## Filtering by Category
+
+The API returns all tools. Filter client-side:
+
+```bash
+# Get only AI agents
+curl -s -u devuser:$PASSWORD http://localhost:8888/api/tools.json \
+  | jq '.tools[] | select(.category == "ai") | .name'
+
+# Get only web services
+curl -s -u devuser:$PASSWORD http://localhost:8888/api/tools.json \
+  | jq '.tools[] | select(.type == "web") | {name, url, port}'
+
+# Count tools
+curl -s -u devuser:$PASSWORD http://localhost:8888/api/tools.json \
+  | jq '.tools | length'
+```
+
+## Example: Agent Discovery
+
+An AI agent can use this endpoint to discover what tools are available and how to invoke them:
+
+```python
+import requests
+
+resp = requests.get(
+    "http://server:8888/api/tools.json",
+    auth=("devuser", "password")
+)
+tools = resp.json()["tools"]
+
+# Find all CLI tools
+cli_tools = [t for t in tools if t["type"] == "cli"]
+
+# Get the command for Claude Code
+claude = next(t for t in tools if t["id"] == "claude-code")
+print(f"Run: {claude['command']}")  # "claude"
+```

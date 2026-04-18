@@ -1,0 +1,60 @@
+---
+title: Architecture
+description: "How Docking Station is built."
+---
+
+# Architecture
+
+Docking Station is a single Docker container running Ubuntu 22.04 LTS with all services managed by supervisord.
+
+## System Diagram
+
+```
+Browser
+  |
+  v
+nginx (port 80) ── basic auth ── password set at runtime
+  |
+  |── /                 Web Dashboard (static HTML/CSS/JS)
+  |── /api/tools.json   Machine-readable tool manifest (25 tools)
+  |── /code-server/     VS Code Web (port 8080)
+  |── /files/           File Browser (port 8443)
+  |── /desktop/         noVNC Linux Desktop (port 6080)
+  |
+  v
+supervisord ── manages all processes
+  |── Xvfb          (virtual display :99)
+  |── Fluxbox       (window manager, Mac Classic theme)
+  |── x11vnc        (VNC server on :5900)
+  |── websockify    (VNC → WebSocket bridge on :6080)
+  |── code-server   (VS Code Web on :8080)
+  |── filebrowser   (File manager on :8443)
+  |── nginx         (reverse proxy + auth on :80)
+  |── idesk         (desktop icons)
+  |── wallpaper     (one-shot: sets desktop background)
+```
+
+## Key Design Decisions
+
+| Decision | Rationale |
+|----------|-----------|
+| **Single container** | Zero orchestration complexity. One `docker run` and you're live. No docker-compose, no Kubernetes. |
+| **All tools at latest versions** | Nightly builds pull the newest version of every tool automatically via native package managers. |
+| **Password auth at nginx** | Tools run without their own auth — one login protects everything. Simplifies the security model. |
+| **Persistent `/workspace`** | Docker volume survives container restarts and image upgrades. |
+| **supervisord** | Battle-tested process supervisor. Each service is independently monitored and auto-restarted on crash. |
+| **Static dashboard** | 3 files (HTML, CSS, JS). No build step, no framework, no runtime. Nothing to crash. |
+| **Node 22 LTS** | Required by OpenClaw; compatible with all npm-based tools. |
+
+## Base Image Stack
+
+| Layer | Technology |
+|-------|-----------|
+| OS | Ubuntu 22.04 LTS |
+| Node.js | 22 LTS (NodeSource) |
+| Python | 3.10 (system) |
+| Window Manager | Fluxbox |
+| VNC | x11vnc + websockify + noVNC |
+| Process Manager | supervisord |
+| Auth Proxy | nginx |
+| Display | Xvfb (virtual framebuffer) |

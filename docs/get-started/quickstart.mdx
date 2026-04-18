@@ -1,0 +1,83 @@
+---
+title: Quickstart
+description: "Get running in under a minute."
+---
+
+## Run Locally
+
+<Steps>
+  <Step title="Start the container">
+    ```bash
+    docker run -d \
+      --name dockingstation \
+      -p 8888:80 \
+      -p 6080:6080 \
+      -p 8080:8080 \
+      -v dockingstation-workspace:/workspace \
+      -e DEV_PASSWORD=changeme \
+      dockingstation
+    ```
+  </Step>
+  <Step title="Open the dashboard">
+    Navigate to [http://localhost:8888](http://localhost:8888) in your browser.
+
+    Login with:
+    - **Username:** `devuser`
+    - **Password:** `changeme`
+  </Step>
+  <Step title="Start coding">
+    Click any tool card on the dashboard to launch it, or open the VS Code Web editor at `/code-server/`.
+  </Step>
+</Steps>
+
+## Build from Source
+
+```bash
+git clone https://github.com/colygon/dockingstation.git
+cd dockingstation/dev-container
+docker build -t dockingstation .
+```
+
+<Warning>
+  The full build installs 22 CLI tools and takes 3-5 minutes depending on your internet connection and architecture.
+</Warning>
+
+## Deploy to a Cloud VM
+
+```bash
+# On any VM with Docker installed:
+docker run -d --restart unless-stopped \
+  -p 443:80 \
+  -v dockingstation-workspace:/workspace \
+  -e DEV_PASSWORD=your-secure-password \
+  dockingstation
+```
+
+<Tip>
+  In production, expose only port 80 (or 443 with a TLS terminator in front). All internal services are proxied through nginx with authentication.
+</Tip>
+
+## Verify Everything is Running
+
+```bash
+# Check all services
+curl -u devuser:changeme http://localhost:8888/api/tools.json | jq '.tools | length'
+# Should return: 25
+```
+
+## Pass API Keys
+
+Most AI tools require API keys. Pass them as environment variables:
+
+```bash
+docker run -d \
+  -p 8888:80 \
+  -e DEV_PASSWORD=changeme \
+  -e ANTHROPIC_API_KEY=sk-ant-... \
+  -e OPENAI_API_KEY=sk-... \
+  -e GOOGLE_API_KEY=... \
+  -e AWS_ACCESS_KEY_ID=... \
+  -e AWS_SECRET_ACCESS_KEY=... \
+  -v dockingstation-workspace:/workspace \
+  dockingstation
+```
