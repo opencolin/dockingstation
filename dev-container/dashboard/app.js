@@ -9,6 +9,8 @@
     { id: 'code-server', url: '/code-server/',  port: 8080 },
     { id: 'filebrowser', url: '/files/',         port: 8443 },
     { id: 'novnc',       url: '/desktop/',       port: 6080 },
+    { id: 'terminal',    url: '/terminal/',      port: 7681 },
+    { id: 'safemode',    url: '/safemode/',      port: 80 },
   ];
 
   async function checkHealth(tool) {
@@ -25,17 +27,19 @@
     const dot = document.getElementById('status-dot');
     const text = document.getElementById('status-text');
     let allUp = true;
+    const statuses = new Map();
 
     for (const tool of WEB_TOOLS) {
       const status = await checkHealth(tool);
+      statuses.set(tool.id, status);
       const card = document.querySelector(`[data-tool="${tool.id}"]`);
       if (card) card.dataset.status = status;
       if (status !== 'up') allUp = false;
     }
 
-    // CLI tools are always "installed" — mark them as up
+    const terminalUp = statuses.get('terminal') === 'up';
     document.querySelectorAll('.cli-tool').forEach(card => {
-      card.dataset.status = 'up';
+      card.dataset.status = terminalUp ? 'up' : 'down';
     });
 
     dot.className = 'status-dot ' + (allUp ? 'ok' : 'err');
@@ -64,14 +68,12 @@
   });
 
   // ── CLI launch buttons ──
-  // Opens the tool in code-server's terminal or falls back to noVNC xterm
+  // Opens the tool in the browser terminal
 
   document.querySelectorAll('.launch-cli').forEach(btn => {
     btn.addEventListener('click', () => {
       const cmd = btn.dataset.cmd;
-      // Open code-server terminal with the command
-      // code-server supports query params for terminal commands
-      const termUrl = `/code-server/?folder=/workspace`;
+      const termUrl = `/terminal/?arg=${encodeURIComponent(cmd)}`;
       window.open(termUrl, '_blank');
     });
   });

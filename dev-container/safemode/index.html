@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SafeMode</title>
+  <meta name="description" content="Static SafeMode-inspired frontend for Docking Station">
+  <link rel="stylesheet" href="/safemode/safemode.css">
+</head>
+<body>
+  <div class="crt"></div>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">SAFE MODE</p>
+      <h1>Fallback Desktop</h1>
+      <p class="subtitle">Static frontend mode for Docking Station</p>
+    </div>
+    <div class="status">
+      <span class="status-dot"></span>
+      <span>Frontend-only</span>
+    </div>
+  </header>
+
+  <main class="desktop">
+    <section class="hero card">
+      <div>
+        <p class="label">Mode</p>
+        <h2>Small, predictable, browser-safe</h2>
+        <p class="copy">
+          This route keeps the SafeMode aesthetic without the full backend stack.
+          It opens Docking Station services directly and avoids extra runtime risk.
+        </p>
+      </div>
+      <div class="hero-actions">
+        <a class="button primary" href="/" target="_blank" rel="noopener">Main Dashboard</a>
+        <a class="button" href="/terminal/?arg=shell" target="_blank" rel="noopener">Terminal</a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <a class="app card" href="/terminal/?arg=codex" target="_blank" rel="noopener">
+        <span class="app-kicker">CLI</span>
+        <strong>Codex</strong>
+        <span>OpenAI agent terminal</span>
+      </a>
+      <a class="app card" href="/terminal/?arg=claude" target="_blank" rel="noopener">
+        <span class="app-kicker">CLI</span>
+        <strong>Claude Code</strong>
+        <span>Anthropic coding agent</span>
+      </a>
+      <a class="app card" href="/terminal/?arg=opencode" target="_blank" rel="noopener">
+        <span class="app-kicker">CLI</span>
+        <strong>OpenCode</strong>
+        <span>Terminal UI coding assistant</span>
+      </a>
+      <a class="app card" href="/files/" target="_blank" rel="noopener">
+        <span class="app-kicker">WEB</span>
+        <strong>Files</strong>
+        <span>Workspace browser</span>
+      </a>
+      <a class="app card" href="/code-server/" target="_blank" rel="noopener">
+        <span class="app-kicker">WEB</span>
+        <strong>VS Code Web</strong>
+        <span>Full editor in browser</span>
+      </a>
+      <a class="app card" href="/desktop/" target="_blank" rel="noopener">
+        <span class="app-kicker">WEB</span>
+        <strong>Desktop</strong>
+        <span>Retro graphical environment</span>
+      </a>
+    </section>
+
+    <section class="panel-row">
+      <section class="card panel">
+        <p class="label">Why this exists</p>
+        <ul>
+          <li>No extra backend process</li>
+          <li>No database dependency</li>
+          <li>No route rewriting beyond static assets</li>
+          <li>Useful alternate launch surface when the main UI changes</li>
+        </ul>
+      </section>
+      <section class="card panel">
+        <p class="label">Notes</p>
+        <ul>
+          <li>Chat and signup from the original SafeMode app are intentionally omitted.</li>
+          <li>This page is meant to stay small and robust.</li>
+          <li>All links still go through Docking Station auth.</li>
+        </ul>
+      </section>
+    </section>
+  </main>
+</body>
+</html>

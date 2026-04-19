@@ -110,6 +110,52 @@
         </a>
       </article>
 
+      <article class="tool-card" data-tool="safemode" data-category="utility" data-port="80" data-status="unknown">
+        <div class="card-icon utility-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 3l8 4v5c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V7l8-4Z"/>
+            <path d="M9.5 12.5 11 14l3.5-4"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h2>SafeMode</h2>
+          <p class="card-desc">Alternate retro frontend running in frontend-only mode</p>
+          <div class="card-meta">
+            <span class="port-badge">/safemode</span>
+            <span class="status-indicator" aria-label="status"></span>
+          </div>
+        </div>
+        <a href="/safemode/" class="card-link" target="_blank" rel="noopener" aria-label="Open SafeMode">
+          <span class="link-text">Open</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </article>
+
+      <article class="tool-card cli-tool" data-tool="terminal" data-category="utility" data-command="shell" data-status="installed">
+        <div class="card-icon utility-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z"/>
+            <path d="m7 10 3 2-3 2M12 14h5"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h2>Terminal</h2>
+          <p class="card-desc">Plain shell in the browser for /workspace</p>
+          <div class="card-meta">
+            <span class="cli-badge">CLI</span>
+            <code class="cmd">shell</code>
+          </div>
+        </div>
+        <button class="card-link launch-cli" data-cmd="shell" aria-label="Launch terminal in browser">
+          <span class="link-text">Launch</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </article>
+
       <article class="tool-card cli-tool" data-tool="opencode" data-category="ai" data-command="opencode" data-status="installed">
         <div class="card-icon ai-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -125,6 +171,74 @@
           </div>
         </div>
         <button class="card-link launch-cli" data-cmd="opencode" aria-label="Launch OpenCode in terminal">
+          <span class="link-text">Launch</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </article>
+
+
+      <article class="tool-card cli-tool" data-tool="grok-cli" data-category="ai" data-command="grok" data-status="installed">
+        <div class="card-icon ai-icon" style="--accent: #0F172A">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 12c0-4.418 3.582-8 8-8h8v8c0 4.418-3.582 8-8 8H4z"/>
+            <path d="M9 9h6M9 13h4"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h2>Grok CLI</h2>
+          <p class="card-desc">Open-source terminal AI assistant powered by Grok</p>
+          <div class="card-meta">
+            <span class="cli-badge">CLI</span>
+            <code class="cmd">grok</code>
+          </div>
+        </div>
+        <button class="card-link launch-cli" data-cmd="grok" aria-label="Launch Grok CLI in terminal">
+          <span class="link-text">Launch</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </article>
+
+      <article class="tool-card cli-tool" data-tool="t3-code" data-category="ai" data-command="t3" data-status="installed">
+        <div class="card-icon ai-icon" style="--accent: #111827">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 6h16M4 12h10M4 18h16"/><path d="M18 9l2 3-2 3"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h2>T3 Code</h2>
+          <p class="card-desc">Theo's coding-agent workspace launcher</p>
+          <div class="card-meta">
+            <span class="cli-badge">CLI</span>
+            <code class="cmd">t3</code>
+          </div>
+        </div>
+        <button class="card-link launch-cli" data-cmd="t3" aria-label="Launch T3 Code in terminal">
+          <span class="link-text">Launch</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </article>
+
+      <article class="tool-card cli-tool" data-tool="kilo-cli" data-category="ai" data-command="kilo" data-status="installed">
+        <div class="card-icon ai-icon" style="--accent: #0EA5E9">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M6 4v16"/><path d="M18 4L9 12l9 8"/><path d="M9 12h9"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h2>Kilo CLI</h2>
+          <p class="card-desc">Keyboard-first coding agent with multi-provider models</p>
+          <div class="card-meta">
+            <span class="cli-badge">CLI</span>
+            <code class="cmd">kilo</code>
+          </div>
+        </div>
+        <button class="card-link launch-cli" data-cmd="kilo" aria-label="Launch Kilo CLI in terminal">
           <span class="link-text">Launch</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
             <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -422,29 +536,6 @@
         </button>
       </article>
 
-      <article class="tool-card cli-tool" data-tool="amazon-q" data-category="ai" data-command="q" data-status="installed">
-        <div class="card-icon ai-icon" style="--accent: #FF9900">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
-            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
-          </svg>
-        </div>
-        <div class="card-body">
-          <h2>Amazon Q CLI</h2>
-          <p class="card-desc">AWS-integrated AI coding and cloud agent</p>
-          <div class="card-meta">
-            <span class="cli-badge">CLI</span>
-            <code class="cmd">q</code>
-          </div>
-        </div>
-        <button class="card-link launch-cli" data-cmd="q" aria-label="Launch Amazon Q in terminal">
-          <span class="link-text">Launch</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </button>
-      </article>
-
       <article class="tool-card cli-tool" data-tool="plandex" data-category="ai" data-command="plandex" data-status="installed">
         <div class="card-icon ai-icon" style="--accent: #8B5CF6">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -591,7 +682,7 @@
           <p class="card-desc">AI coding assistant — build in your terminal</p>
           <div class="card-meta">
             <span class="cli-badge">CLI</span>
-            <code class="cmd">qoder</code>
+            <code class="cmd">qodercli</code>
           </div>
         </div>
         <button class="card-link launch-cli" data-cmd="qoder" aria-label="Launch Qoder in terminal">
@@ -602,43 +693,21 @@
         </button>
       </article>
 
-      <article class="tool-card cli-tool" data-tool="chaterm" data-category="ai" data-command="chaterm" data-status="installed">
-        <div class="card-icon ai-icon" style="--accent: #34D399">
+      <article class="tool-card cli-tool" data-tool="coderabbit-cli" data-category="ai" data-command="coderabbit" data-status="installed">
+        <div class="card-icon ai-icon" style="--accent: #F97316">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+            <path d="M7 7h10a4 4 0 010 8H9l-4 4V11a4 4 0 014-4z"/><path d="M10 11h4"/>
           </svg>
         </div>
         <div class="card-body">
-          <h2>Chaterm</h2>
-          <p class="card-desc">AI terminal for cloud infrastructure management</p>
+          <h2>CodeRabbit CLI</h2>
+          <p class="card-desc">AI code reviews for staged and unstaged changes</p>
           <div class="card-meta">
             <span class="cli-badge">CLI</span>
-            <code class="cmd">chaterm</code>
+            <code class="cmd">coderabbit</code>
           </div>
         </div>
-        <button class="card-link launch-cli" data-cmd="chaterm" aria-label="Launch Chaterm in terminal">
-          <span class="link-text">Launch</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </button>
-      </article>
-
-      <article class="tool-card cli-tool" data-tool="apex2" data-category="ai" data-command="apex2" data-status="installed">
-        <div class="card-icon ai-icon" style="--accent: #EF4444">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-          </svg>
-        </div>
-        <div class="card-body">
-          <h2>Apex2</h2>
-          <p class="card-desc">Terminal-Bench #1 (v1.0) — research coding agent</p>
-          <div class="card-meta">
-            <span class="cli-badge">CLI</span>
-            <code class="cmd">apex2</code>
-          </div>
-        </div>
-        <button class="card-link launch-cli" data-cmd="apex2" aria-label="Launch Apex2 in terminal">
+        <button class="card-link launch-cli" data-cmd="coderabbit" aria-label="Launch CodeRabbit CLI in terminal">
           <span class="link-text">Launch</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
             <path d="M5 12h14M12 5l7 7-7 7"/>

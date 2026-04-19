@@ -38,6 +38,28 @@
       "docs": "https://novnc.com"
     },
     {
+      "id": "safemode",
+      "name": "SafeMode",
+      "description": "Alternate retro web frontend running in frontend-only mode",
+      "category": "utility",
+      "type": "web",
+      "port": 80,
+      "url": "/safemode/",
+      "command": null,
+      "docs": "https://github.com/opencolin/safemode"
+    },
+    {
+      "id": "terminal",
+      "name": "Terminal",
+      "description": "Plain shell in the browser for /workspace",
+      "category": "utility",
+      "type": "cli",
+      "port": 7681,
+      "url": "/terminal/?arg=shell",
+      "command": "shell",
+      "docs": "https://github.com/sorenisanerd/gotty"
+    },
+    {
       "id": "opencode",
       "name": "OpenCode",
       "description": "AI coding assistant with terminal UI",
@@ -47,6 +69,39 @@
       "url": null,
       "command": "opencode",
       "docs": "https://opencode.ai/docs"
+    },
+    {
+      "id": "grok-cli",
+      "name": "Grok CLI",
+      "description": "Open-source terminal AI assistant powered by Grok",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "grok",
+      "docs": "https://github.com/superagent-ai/grok-cli"
+    },
+    {
+      "id": "t3-code",
+      "name": "T3 Code",
+      "description": "Theo's coding-agent workspace launcher",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "t3",
+      "docs": "https://github.com/pingdotgg/t3code"
+    },
+    {
+      "id": "kilo-cli",
+      "name": "Kilo CLI",
+      "description": "Keyboard-first coding agent with multi-provider model support",
+      "category": "ai",
+      "type": "cli",
+      "port": null,
+      "url": null,
+      "command": "kilo",
+      "docs": "https://kilo.ai/docs/code-with-ai/platforms/cli"
     },
     {
       "id": "claude-code",
@@ -192,17 +247,6 @@
       "docs": "https://ampcode.com"
     },
     {
-      "id": "amazon-q",
-      "name": "Amazon Q CLI",
-      "description": "AWS-integrated AI coding and cloud agent",
-      "category": "ai",
-      "type": "cli",
-      "port": null,
-      "url": null,
-      "command": "q",
-      "docs": "https://docs.aws.amazon.com/amazonq"
-    },
-    {
       "id": "plandex",
       "name": "Plandex",
       "description": "Multi-step task planner with diff management for complex changes",
@@ -234,7 +278,7 @@
       "url": null,
       "command": "kiro",
       "docs": "https://kiro.dev"
-    }
+    },
     {
       "id": "junie",
       "name": "Junie CLI",
@@ -267,7 +311,7 @@
       "url": null,
       "command": "iflow",
       "docs": "https://github.com/iflow-ai/iflow-cli"
-    }
+    },
     {
       "id": "qoder",
       "name": "Qoder CLI",
@@ -276,30 +320,19 @@
       "type": "cli",
       "port": null,
       "url": null,
-      "command": "qoder",
+      "command": "qodercli",
       "docs": "https://qoder.com"
     },
     {
-      "id": "chaterm",
-      "name": "Chaterm",
-      "description": "AI terminal for cloud and infrastructure management",
+      "id": "coderabbit-cli",
+      "name": "CodeRabbit CLI",
+      "description": "AI code reviews in the terminal for staged and unstaged changes",
       "category": "ai",
       "type": "cli",
       "port": null,
       "url": null,
-      "command": "chaterm",
-      "docs": "https://chaterm.ai"
-    },
-    {
-      "id": "apex2",
-      "name": "Apex2",
-      "description": "Terminal-Bench #1 (v1.0) — research coding agent from heartyguy",
-      "category": "ai",
-      "type": "cli",
-      "port": null,
-      "url": null,
-      "command": "apex2",
-      "docs": "https://github.com/heartyguy/Apex2-Terminal-Bench-Agent"
+      "command": "coderabbit",
+      "docs": "https://www.coderabbit.ai/cli"
     }
   ],
   "endpoints": {

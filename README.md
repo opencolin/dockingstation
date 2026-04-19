@@ -1,111 +1,90 @@
 # Docking Station
 
-**One container. 25 AI coding tools. Ready in 30 seconds.**
+**One container. 30 tools. Every AI coding agent. Ready in 30 seconds.**
 
-Docking Station is a self-hosted developer environment that bundles every major AI coding agent into a single Docker container with a web dashboard and JSON API. Deploy it once and your entire team gets instant, password-protected access to 22 AI coding agents from any browser — no local installs, no conflicting dependencies, no seat management across vendors.
+Docking Station is a self-hosted developer environment that bundles every major AI coding agent into a single Docker container. It ships with a web dashboard, a browser-based terminal, a JSON API for automation, and a full Linux desktop — all behind optional password-protected access.
 
----
-
-## The Problem
-
-Your engineering team wants to evaluate AI coding tools. Today that means:
-
-- Installing 20+ CLI tools on every developer machine, each with different runtimes and dependencies
-- Managing API keys and auth across Anthropic, Google, OpenAI, JetBrains, AWS, Alibaba, and more
-- No way to standardize or compare tools — every developer has a different setup
-- Security and compliance headaches with API keys scattered across personal laptops
-- New hires wait hours to set up their environment before writing their first line of code
-
-## The Solution
+Deploy it once and your entire team gets instant access to 25 AI coding agents and 5 development tools from any browser.
 
 ```bash
 docker run -d -p 8888:80 -e DEV_PASSWORD=securepwd \
   -v workspace:/workspace dockingstation
 ```
 
-Open `http://your-server:8888`. Log in. Start coding with any AI tool.
-
-That's it.
+Open `http://your-server:8888`. Log in. Start coding.
 
 ---
 
 ## What's Inside
 
-### AI Coding Agents (22 tools)
+### AI Coding Agents (25)
 
-| Tool | Provider | Command | What It Does |
+| Tool | Provider | Command | Description |
 |------|----------|---------|-------------|
 | **ForgeCode** | TailCall | `forge` | #1 on terminal-bench v2.0 (81.8%) — multi-model TUI agent |
 | **Claude Code** | Anthropic | `claude` | Agentic coding — reads your codebase, writes code, runs commands |
 | **Gemini CLI** | Google | `gemini` | AI assistant with Google Cloud integration |
-| **Codex CLI** | OpenAI | `codex` | Autonomous coding agent from OpenAI |
-| **GitHub Copilot CLI** | GitHub | `copilot` | GitHub's agentic coding agent for the terminal |
+| **Codex CLI** | OpenAI | `codex` | Autonomous coding agent |
+| **GitHub Copilot CLI** | GitHub | `copilot` | GitHub's agentic terminal agent |
 | **Droid** | Factory AI | `droid` | #6 on terminal-bench v2.0 (77.3%) |
 | **Goose** | Block | `goose` | MCP-native agent with 70+ extensions (Stripe forked this) |
-| **Aider** | Aider | `aider` | Most popular OSS AI pair programmer — git-native file editing |
+| **Aider** | Aider | `aider` | Most popular OSS pair programmer — git-native file editing |
 | **Crush CLI** | Charmbracelet | `crush` | Beautiful TUI-based AI coding agent |
-| **Amp** | Sourcegraph | `amp` | Multi-repo aware agentic coding (formerly Cody) |
-| **Junie CLI** | JetBrains | `junie` | JetBrains' AI coding agent for the terminal |
-| **OpenCode** | OpenCode | `opencode` | Multi-model AI coding assistant |
+| **Amp** | Sourcegraph | `amp` | Multi-repo agentic coding (formerly Cody) |
+| **Junie CLI** | JetBrains | `junie` | JetBrains' AI coding agent |
+| **OpenCode** | OpenCode | `opencode` | Multi-model AI coding assistant (142K stars) |
 | **Qwen Code** | Alibaba | `qwen` | AI coding assistant from the Qwen team |
 | **Amazon Q CLI** | AWS | `q` | AWS-integrated AI coding and cloud agent |
+| **Grok CLI** | Community | `grok` | Open-source terminal assistant powered by Grok |
+| **T3 Code** | Ping.gg | `t3` | Theo's coding-agent workspace launcher |
+| **Kilo CLI** | Kilo | `kilo` | Keyboard-first coding agent with multi-provider support |
 | **Plandex** | Plandex | `plandex` | Multi-step task planner with diff management |
 | **Kiro CLI** | AWS | `kiro-cli` | Spec-driven agentic coding |
-| **Continue** | Continue | `cn` | Source-controlled AI checks, enforceable in CI |
+| **Continue** | Continue | `cn` | Source-controlled AI checks, enforceable in CI (32K+ stars) |
 | **Letta Code** | Letta AI | `letta` | Memory-first AI coding agent |
 | **iFlow CLI** | iFlow | `iflow` | Multi-model agent (free Kimi, Qwen, DeepSeek access) |
-| **Qoder CLI** | Qoder | `qoder` | AI coding assistant — build in your terminal |
+| **Qoder CLI** | Qoder | `qodercli` | AI coding assistant for the terminal |
 | **Cline CLI** | Cline | `cline-cli` | Autonomous terminal agent |
-| **OpenClaw** | OpenClaw | `openclaw` | Multi-channel AI gateway |
-| **Chaterm** | Chaterm | `chaterm` | AI terminal for cloud infrastructure management |
-| **Apex2** | heartyguy | — | Terminal-Bench #1 (v1.0, 64.5%) — research agent |
+| **CodeRabbit CLI** | CodeRabbit | `coderabbit` | AI code reviews for staged and unstaged changes |
 
-### Development Environment (3 tools)
+### Development Environment (5)
 
-| Tool | Command | What It Does |
-|------|---------|-------------|
-| **VS Code Web** | `code-server` | Full Visual Studio Code in the browser |
-| **File Browser** | `filebrowser` | Web-based file manager with upload/download |
-| **Linux Desktop** | noVNC | Full GUI desktop accessible via browser with 90s Mac theme |
+| Tool | URL | Description |
+|------|-----|-------------|
+| **VS Code Web** | `/code-server/` | Full Visual Studio Code in the browser |
+| **File Browser** | `/files/` | Web-based file manager for `/workspace` |
+| **Browser Terminal** | `/terminal/` | GoTTY-powered shell — launch any CLI tool in a browser tab |
+| **Linux Desktop** | `/desktop/` | Full GUI desktop via noVNC with 90s Mac theme |
+| **SafeMode** | `/safemode/` | Alternate retro web frontend |
+
+### Base Layer
+
+| Tool | Description |
+|------|-------------|
+| **Homebrew** | Package manager for additional tools (`brew install ...`) |
+| **Bun** | Fast JavaScript runtime and package manager |
+| **gh** | GitHub CLI |
+| **tmux** | Terminal multiplexer |
 
 ---
 
-## Two Interfaces
+## Three Interfaces
 
-### Web Dashboard (for humans)
+### Web Dashboard
 
-The landing page at `/` is a dark-themed dashboard with:
+The landing page at `/` is a dark-themed dashboard with card-based tool launchers, live health indicators, and category filters. Click any CLI tool card to open it directly in the browser terminal.
 
-- Card-based launcher for every tool with unique icons
-- Live health status indicators (green/red dots)
-- Category filters (All / Editors / AI Assistants / Utilities)
-- One-click access to VS Code, File Browser, and the Linux desktop
-- Staggered card animations
+### Browser Terminal
 
-### JSON API (for agents and automation)
+Every CLI tool can be launched in a browser tab via GoTTY at `/terminal/`. The dashboard's "Launch" buttons open tools directly — no SSH or VNC required.
+
+### JSON API
 
 ```bash
 curl -u devuser:$PASSWORD http://your-server:8888/api/tools.json
 ```
 
-Returns a structured manifest of every tool:
-
-```json
-{
-  "tools": [
-    {
-      "id": "claude-code",
-      "name": "Claude Code",
-      "command": "claude",
-      "category": "ai",
-      "type": "cli",
-      "docs": "https://docs.anthropic.com/en/docs/claude-code"
-    }
-  ]
-}
-```
-
-Built for CI/CD pipelines, orchestration scripts, and AI agent workflows that need to discover and invoke tools programmatically. Includes CORS headers for cross-origin access.
+Returns a structured manifest of all 30 tools with id, command, category, port, URL, and docs link. Built for agent orchestration and CI/CD pipelines.
 
 ---
 
@@ -115,30 +94,21 @@ Built for CI/CD pipelines, orchestration scripts, and AI agent workflows that ne
 Browser
   |
   v
-nginx (port 80) ── basic auth ── password set at runtime
+nginx (port 80) ── optional basic auth
   |
-  |── /                 Web Dashboard (static HTML/CSS/JS)
-  |── /api/tools.json   Machine-readable tool manifest (25 tools)
+  |── /                 Web Dashboard
+  |── /api/tools.json   Machine-readable tool manifest (30 tools)
   |── /code-server/     VS Code Web (port 8080)
   |── /files/           File Browser (port 8443)
+  |── /terminal/        GoTTY browser terminal (port 7681)
   |── /desktop/         noVNC Linux Desktop (port 6080)
+  |── /safemode/        Alternate retro frontend
   |
   v
 supervisord ── manages all processes
-  |── Xvfb          (virtual display)
-  |── Fluxbox       (window manager, 90s Mac theme)
-  |── x11vnc        (VNC server)
-  |── websockify    (VNC-to-WebSocket bridge)
-  |── code-server   (VS Code Web)
-  |── filebrowser   (File Browser)
-  |── nginx         (reverse proxy + auth)
-  |── idesk         (desktop icons)
 ```
 
-**Base image:** Ubuntu 22.04 LTS
-**Node.js:** 22 LTS (via NodeSource)
-**Process manager:** supervisord
-**Auth:** HTTP basic auth via nginx (username: `devuser`)
+**Base:** Ubuntu 22.04 LTS | Node.js 22 | Python 3.10 | Homebrew | Bun
 
 ---
 
@@ -155,10 +125,13 @@ docker run -d \
   -v dockingstation-workspace:/workspace \
   -e DEV_PASSWORD=changeme \
   dockingstation
+```
 
-# Open the dashboard
-open http://localhost:8888
-# Login: devuser / changeme
+### Without Auth
+
+```bash
+docker run -d -p 8888:80 -e NO_AUTH=1 \
+  -v dockingstation-workspace:/workspace dockingstation
 ```
 
 ### Build from Source
@@ -172,7 +145,6 @@ docker build -t dockingstation .
 ### Deploy to a Cloud VM
 
 ```bash
-# On any VM with Docker installed:
 docker run -d --restart unless-stopped \
   -p 443:80 \
   -v dockingstation-workspace:/workspace \
@@ -184,65 +156,19 @@ docker run -d --restart unless-stopped \
 
 ## Terminal-Bench Rankings
 
-Several tools in Docking Station are top performers on [terminal-bench](https://www.tbench.ai/), the Stanford x Laude benchmark for AI terminal agents:
+Several tools in Docking Station are top performers on [terminal-bench](https://www.tbench.ai):
 
 | Rank (v2.0) | Tool | Score |
 |-------------|------|-------|
-| #1 | ForgeCode | 81.8% |
-| #6 | Droid | 77.3% |
-| — | Codex CLI | Listed |
-| — | Claude Code | Listed |
-| — | Goose | Listed |
-| — | Gemini CLI | Listed |
-| — | OpenCode | Listed |
+| **#1** | ForgeCode | 81.8% |
+| **#6** | Droid | 77.3% |
+| — | Codex CLI, Claude Code, Goose, Gemini CLI, OpenCode | Listed |
 
 | Rank (v1.0) | Tool | Score |
 |-------------|------|-------|
-| #1 | Apex2 | 64.5% |
-| #2 | Chaterm | 63.7% |
-| #5 | Droid | 58.8% |
-| #20 | Claude Code | 43.2% |
-| #21 | Codex CLI | 42.8% |
-
----
-
-## Key Design Decisions
-
-| Decision | Rationale |
-|----------|-----------|
-| **Single container** | Zero orchestration complexity. One `docker run` and you're live. |
-| **All tools at latest versions** | Nightly builds pull the newest version of every tool automatically. |
-| **Password auth at the nginx layer** | Tools run without their own auth — one login protects everything. |
-| **Persistent `/workspace` volume** | Code, configs, and shell history survive container restarts and upgrades. |
-| **supervisord for process management** | Battle-tested, zero-dependency process supervisor. Each service is independently monitored and auto-restarted. |
-| **Static dashboard + JSON API** | No runtime framework. The dashboard is 3 files (HTML, CSS, JS). The API is a static JSON file. Nothing to crash. |
-| **Node 22 LTS** | Required by OpenClaw; compatible with all npm-based tools. |
-
----
-
-## Nightly Builds
-
-A GitHub Actions workflow rebuilds the image every night at 02:00 UTC, pulling the latest version of every tool. Images are pushed to GitHub Container Registry with three tags:
-
-- `latest` — always the newest build
-- `2026-04-17` — date-stamped for reproducibility
-- `abc1234` — git SHA for traceability
-
-Builds target both `linux/amd64` and `linux/arm64`.
-
----
-
-## Ports
-
-| Port | Service | Access |
-|------|---------|--------|
-| 80 | nginx (auth proxy + dashboard) | Primary entry point |
-| 6080 | noVNC (Linux desktop) | Direct, no auth |
-| 8080 | code-server (VS Code Web) | Direct, no auth |
-| 8443 | File Browser | Direct, no auth |
-| 5900 | VNC | Direct, no auth |
-
-In production, expose only port 80 behind your firewall. All other ports are proxied through nginx with authentication.
+| **#5** | Droid | 58.8% |
+| **#20** | Claude Code | 43.2% |
+| **#21** | Codex CLI | 42.8% |
 
 ---
 
@@ -250,21 +176,44 @@ In production, expose only port 80 behind your firewall. All other ports are pro
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `DEV_PASSWORD` | Yes | Password for HTTP basic auth (username is always `devuser`) |
+| `DEV_PASSWORD` | Yes* | Password for HTTP basic auth (username: `devuser`) |
+| `NO_AUTH` | No | Set to `1` to disable authentication |
 
-API keys for individual AI tools should be passed as additional environment variables:
+*Not required when `NO_AUTH=1`.
+
+Pass API keys for individual tools as additional env vars:
 
 ```bash
-docker run -d \
-  -e DEV_PASSWORD=changeme \
-  -e ANTHROPIC_API_KEY=sk-ant-... \
-  -e OPENAI_API_KEY=sk-... \
-  -e GOOGLE_API_KEY=... \
-  -e AWS_ACCESS_KEY_ID=... \
-  dockingstation
+-e ANTHROPIC_API_KEY=sk-ant-... \
+-e OPENAI_API_KEY=sk-... \
+-e GOOGLE_API_KEY=... \
+-e AWS_ACCESS_KEY_ID=...
 ```
 
 ---
+
+## Ports
+
+| Port | Service |
+|------|---------|
+| 80 | nginx (dashboard + auth proxy) |
+| 6080 | noVNC desktop |
+| 7681 | GoTTY browser terminal |
+| 8080 | VS Code Web |
+| 8443 | File Browser |
+| 5900 | VNC |
+
+---
+
+## Nightly Builds
+
+GitHub Actions rebuilds the image daily at 02:00 UTC with the latest tool versions. Images are pushed to GHCR with `latest`, date, and SHA tags. Targets `linux/amd64` and `linux/arm64`.
+
+---
+
+## Docs
+
+Full documentation at [docs/](./docs/) (Mintlify).
 
 ## License
 
