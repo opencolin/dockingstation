@@ -60,6 +60,17 @@
       "docs": "https://github.com/sorenisanerd/gotty"
     },
     {
+      "id": "agents",
+      "name": "All Agents (tmux)",
+      "description": "Single tmux session with all 25 AI agents as named windows — Ctrl-b w to switch",
+      "category": "utility",
+      "type": "cli",
+      "port": 7681,
+      "url": "/terminal/?arg=agents",
+      "command": "launch-agents.sh",
+      "docs": null
+    },
+    {
       "id": "opencode",
       "name": "OpenCode",
       "description": "AI coding assistant with terminal UI",

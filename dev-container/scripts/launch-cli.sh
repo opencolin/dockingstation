@@ -7,6 +7,7 @@ cd /workspace
 
 case "$TOOL" in
   shell) exec /bin/bash -il ;;
+  agents) exec /usr/local/bin/launch-agents.sh ;;
   opencode) exec opencode ;;
   grok) exec grok ;;
   t3) exec t3 ;;
@@ -34,7 +35,7 @@ case "$TOOL" in
   coderabbit) exec coderabbit ;;
   *)
     printf 'Unsupported CLI tool: %s\n\n' "$TOOL" >&2
-    printf 'Supported tools: shell opencode grok t3 kilo claude gemini qwen codex crush openclaw cline-cli forge goose aider github-copilot-cli droid amp plandex cn kiro junie letta iflow qoder coderabbit\n' >&2
+    printf 'Supported tools: shell agents opencode grok t3 kilo claude gemini qwen codex crush openclaw cline-cli forge goose aider github-copilot-cli droid amp plandex cn kiro junie letta iflow qoder coderabbit\n' >&2
     exit 64
     ;;
 esac

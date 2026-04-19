@@ -257,7 +257,8 @@ RUN npm install -g @qoder-ai/qodercli
 # ----------------------------------------------------------------------
 # Grok CLI
 # ----------------------------------------------------------------------
-RUN curl -fsSL https://raw.githubusercontent.com/superagent-ai/grok-cli/main/install.sh | bash
+RUN curl -fsSL https://raw.githubusercontent.com/superagent-ai/grok-cli/main/install.sh | bash || \
+    echo "WARN: Grok CLI not available for this architecture, skipping"
 
 # ----------------------------------------------------------------------
 # CodeRabbit CLI
@@ -346,7 +347,8 @@ RUN chmod +x /usr/local/bin/start-dev.sh
 # CLI launcher for GoTTY
 # ----------------------------------------------------------------------
 COPY ./scripts/launch-cli.sh /usr/local/bin/launch-cli.sh
-RUN chmod +x /usr/local/bin/launch-cli.sh
+COPY ./scripts/launch-agents.sh /usr/local/bin/launch-agents.sh
+RUN chmod +x /usr/local/bin/launch-cli.sh /usr/local/bin/launch-agents.sh
 
 # ----------------------------------------------------------------------
 # Default working directory (supervisor runs app processes as devuser)

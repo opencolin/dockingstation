@@ -156,6 +156,29 @@
         </button>
       </article>
 
+      <article class="tool-card" data-tool="agents" data-category="utility" data-status="up" style="border-left: 3px solid var(--accent);">
+        <div class="card-icon" style="background: linear-gradient(135deg, #6366F1, #8B5CF6); color: #fff;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="3" width="20" height="18" rx="2"/><path d="M2 9h20"/><path d="M9 3v6"/>
+            <path d="M6 14h3M6 17h5M13 14h5M13 17h3"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h2>All Agents (tmux)</h2>
+          <p class="card-desc">25 agents in one tmux session — Ctrl-b w to switch</p>
+          <div class="card-meta">
+            <span class="port-badge" style="background: rgba(139,92,246,0.15); color: #A78BFA;">tmux</span>
+            <code class="cmd">launch-agents.sh</code>
+          </div>
+        </div>
+        <button class="card-link launch-cli" data-cmd="agents" aria-label="Launch all agents in tmux">
+          <span class="link-text">Launch All</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </article>
+
       <article class="tool-card cli-tool" data-tool="opencode" data-category="ai" data-command="opencode" data-status="installed">
         <div class="card-icon ai-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
