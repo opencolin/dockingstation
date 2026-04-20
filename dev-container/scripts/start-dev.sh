@@ -67,7 +67,20 @@ __AUTH_CONFIG__
         proxy_set_header Host $host;
     }
 
-    # browser terminal for CLI tools
+    # browser terminal – WebSocket endpoint (no auth – page load already authenticated)
+    location = /terminal/ws {
+        auth_basic off;
+        proxy_pass http://127.0.0.1:7681/ws;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+        proxy_set_header Host $host;
+        proxy_read_timeout 3600s;
+        proxy_send_timeout 3600s;
+        proxy_buffering off;
+    }
+
+    # browser terminal – HTML page and static assets
     location /terminal/ {
         proxy_pass http://127.0.0.1:7681/;
         proxy_http_version 1.1;
