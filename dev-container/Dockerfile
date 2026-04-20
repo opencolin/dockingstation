@@ -98,6 +98,11 @@ RUN npm install -g t3
 RUN npm install -g @kilocode/cli
 
 # ----------------------------------------------------------------------
+# Cue CLI (sf-tools)
+# ----------------------------------------------------------------------
+RUN npm install -g @sf-tools/cue
+
+# ----------------------------------------------------------------------
 # Bun
 # ----------------------------------------------------------------------
 RUN curl -fsSL https://bun.sh/install | bash
@@ -173,8 +178,14 @@ RUN curl -fsSL https://forgecode.dev/cli | sh
 # ----------------------------------------------------------------------
 # Goose (Block/Square — 41K stars, MCP-native, Stripe forked this)
 # ----------------------------------------------------------------------
-RUN mkdir -p /root/.local/bin && \
-    curl -fsSL https://github.com/block/goose/releases/download/stable/goose-aarch64-unknown-linux-gnu.tar.bz2 -o /tmp/goose.tar.bz2 && \
+RUN set -eux; \
+    case "${TARGETARCH}" in \
+      amd64) GOOSE_ARCH="x86_64-unknown-linux-gnu" ;; \
+      arm64) GOOSE_ARCH="aarch64-unknown-linux-gnu" ;; \
+      *) echo "Unsupported TARGETARCH for Goose: ${TARGETARCH}" >&2; exit 1 ;; \
+    esac; \
+    mkdir -p /root/.local/bin && \
+    curl -fsSL "https://github.com/block/goose/releases/download/stable/goose-${GOOSE_ARCH}.tar.bz2" -o /tmp/goose.tar.bz2 && \
     tar -xjf /tmp/goose.tar.bz2 -C /root/.local/bin && \
     chmod +x /root/.local/bin/goose && \
     rm /tmp/goose.tar.bz2
@@ -232,12 +243,7 @@ RUN curl -fsSL https://cli.kiro.dev/install | bash
 # ----------------------------------------------------------------------
 # Junie CLI (JetBrains' AI coding agent)
 # ----------------------------------------------------------------------
-RUN for attempt in 1 2 3; do \
-      curl -fsSL https://junie.jetbrains.com/install.sh | bash && exit 0; \
-      echo "Junie install failed on attempt ${attempt}, retrying..." >&2; \
-      sleep 5; \
-    done; \
-    exit 1
+RUN npm install -g @jetbrains/junie-cli
 
 # ----------------------------------------------------------------------
 # Letta Code (memory-first coding agent)
@@ -266,6 +272,17 @@ RUN curl -fsSL https://raw.githubusercontent.com/superagent-ai/grok-cli/main/ins
 RUN curl -fsSL https://cli.coderabbit.ai/install.sh | sh
 
 # ----------------------------------------------------------------------
+# Ghostty (GUI terminal for the Linux desktop)
+# Installed via the universal AppImage route linked from Ghostty's Linux docs.
+# ----------------------------------------------------------------------
+RUN mkdir -p /opt/ghostty && \
+    GHOSTTY_URL="$(python3 -c 'import json, urllib.request; data=json.load(urllib.request.urlopen("https://api.github.com/repos/pkgforge-dev/ghostty-appimage/releases/latest")); print(next(asset["browser_download_url"] for asset in data["assets"] if asset["name"].endswith("-x86_64.AppImage")))' )" && \
+    curl -fsSL "$GHOSTTY_URL" -o /opt/ghostty/ghostty.AppImage && \
+    chmod +x /opt/ghostty/ghostty.AppImage && \
+    printf '%s\n' '#!/usr/bin/env bash' 'export APPIMAGE_EXTRACT_AND_RUN=1' 'exec /opt/ghostty/ghostty.AppImage "$@"' > /usr/local/bin/ghostty && \
+    chmod +x /usr/local/bin/ghostty
+
+# ----------------------------------------------------------------------
 # Chaterm (AI terminal for infrastructure — Electron, .deb)
 # ----------------------------------------------------------------------
 RUN wget -q "https://github.com/chaterm/Chaterm/releases/latest/download/chaterm-0.10.1-linux-amd64.deb" -O /tmp/chaterm.deb && \
@@ -287,14 +304,15 @@ RUN install -m 0755 /root/.opencode/bin/opencode /usr/local/bin/opencode && \
     (which bunx >/dev/null 2>&1 || install -m 0755 /root/.bun/bin/bunx /usr/local/bin/bunx 2>/dev/null || true) && \
     (which gh >/dev/null 2>&1 || install -m 0755 /home/linuxbrew/.linuxbrew/bin/gh /usr/local/bin/gh 2>/dev/null || true) && \
     (which tmux >/dev/null 2>&1 || install -m 0755 /home/linuxbrew/.linuxbrew/bin/tmux /usr/local/bin/tmux 2>/dev/null || true) && \
-    (which forge >/dev/null 2>&1 || install -m 0755 /root/.local/bin/forge /usr/local/bin/forge 2>/dev/null || true) && \
-    (which goose >/dev/null 2>&1 || install -m 0755 /root/.local/bin/goose /usr/local/bin/goose 2>/dev/null || true) && \
-    (which droid >/dev/null 2>&1 || install -m 0755 /root/.local/bin/droid /usr/local/bin/droid 2>/dev/null || true) && \
-    (which junie >/dev/null 2>&1 || install -m 0755 /root/.local/bin/junie /usr/local/bin/junie 2>/dev/null || true) && \
-    (which kiro-cli >/dev/null 2>&1 || install -m 0755 /root/.local/bin/kiro-cli /usr/local/bin/kiro-cli 2>/dev/null || true) && \
-    (which grok >/dev/null 2>&1 || install -m 0755 /root/.grok/bin/grok /usr/local/bin/grok 2>/dev/null || true) && \
-    (which coderabbit >/dev/null 2>&1 || install -m 0755 /root/.local/bin/coderabbit /usr/local/bin/coderabbit 2>/dev/null || true) && \
-    (which cr >/dev/null 2>&1 || install -m 0755 /root/.local/bin/cr /usr/local/bin/cr 2>/dev/null || true)
+    (which cue >/dev/null 2>&1 || install -m 0755 /home/linuxbrew/.linuxbrew/bin/cue /usr/local/bin/cue 2>/dev/null || true) && \
+    (install -m 0755 /root/.local/bin/forge /usr/local/bin/forge 2>/dev/null || true) && \
+    (install -m 0755 /root/.local/bin/goose /usr/local/bin/goose 2>/dev/null || true) && \
+    (install -m 0755 /root/.local/bin/droid /usr/local/bin/droid 2>/dev/null || true) && \
+    (install -m 0755 /root/.local/bin/junie /usr/local/bin/junie 2>/dev/null || true) && \
+    (install -m 0755 /root/.local/bin/kiro-cli /usr/local/bin/kiro-cli 2>/dev/null || true) && \
+    (install -m 0755 /root/.grok/bin/grok /usr/local/bin/grok 2>/dev/null || true) && \
+    (install -m 0755 /root/.local/bin/coderabbit /usr/local/bin/coderabbit 2>/dev/null || true) && \
+    (install -m 0755 /root/.local/bin/cr /usr/local/bin/cr 2>/dev/null || true)
 
 # ----------------------------------------------------------------------
 # 90s Macintosh theme: Fluxbox config
@@ -348,7 +366,8 @@ RUN chmod +x /usr/local/bin/start-dev.sh
 # ----------------------------------------------------------------------
 COPY ./scripts/launch-cli.sh /usr/local/bin/launch-cli.sh
 COPY ./scripts/launch-agents.sh /usr/local/bin/launch-agents.sh
-RUN chmod +x /usr/local/bin/launch-cli.sh /usr/local/bin/launch-agents.sh
+COPY ./scripts/t3-link-server.py /usr/local/bin/t3-link-server.py
+RUN chmod +x /usr/local/bin/launch-cli.sh /usr/local/bin/launch-agents.sh /usr/local/bin/t3-link-server.py
 
 # ----------------------------------------------------------------------
 # Default working directory (supervisor runs app processes as devuser)
@@ -362,7 +381,7 @@ WORKDIR /workspace
 #   5900 - VNC
 #   8443 - file browser
 # ----------------------------------------------------------------------
-EXPOSE 6080 8080 5900 8443
+EXPOSE 8080 8443 3773
 
 # ----------------------------------------------------------------------
 # Entrypoint

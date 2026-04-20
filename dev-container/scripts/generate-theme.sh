@@ -27,7 +27,7 @@ convert -size 1280x1024 \
   \) -composite \
   -gravity North \
   -fill "#FFFFFF" -font "$FONT_BOLD" -pointsize 28 \
-  -annotate +0+30 "Docking Station" \
+  -annotate +0+30 "SafeMode" \
   -fill "#CCCCDD" -font "$FONT_REG" -pointsize 14 \
   -annotate +0+65 "Developer Container" \
   /home/devuser/.fluxbox/wallpaper.png

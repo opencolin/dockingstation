@@ -31,7 +31,6 @@ AGENTS=(
   "opencode:OpenCode"
   "qwen:Qwen Code"
   "grok:Grok CLI"
-  "t3:T3 Code"
   "kilo:Kilo CLI"
   "plandex:Plandex"
   "kiro-cli:Kiro CLI"
@@ -39,8 +38,8 @@ AGENTS=(
   "letta:Letta Code"
   "iflow:iFlow CLI"
   "qodercli:Qoder CLI"
-  "cline-cli:Cline CLI"
-  "openclaw:OpenClaw"
+  "cline-task:Cline CLI"
+  "openclaw-agent:OpenClaw"
   "coderabbit:CodeRabbit"
 )
 
@@ -57,6 +56,44 @@ fi
 
 cd /workspace
 
+launch_line_for() {
+  local cmd="$1"
+  local resolved=""
+
+  case "$cmd" in
+    forge|goose|junie|coderabbit)
+      printf "exec '/usr/local/bin/launch-cli.sh' %s" "$cmd"
+      return 0
+      ;;
+    cline-task)
+      printf "exec '/usr/local/bin/launch-cli.sh' cline-cli"
+      return 0
+      ;;
+    openclaw-agent)
+      printf "exec '/usr/local/bin/launch-cli.sh' openclaw"
+      return 0
+      ;;
+  esac
+
+  if resolved="$(command -v "$cmd" 2>/dev/null)"; then
+    printf "exec '%s'" "$resolved"
+    return 0
+  fi
+
+  case "$cmd" in
+    copilot) resolved="$(command -v copilot 2>/dev/null || true)" ;;
+    qodercli) resolved="$(command -v qodercli 2>/dev/null || true)" ;;
+    kiro-cli) resolved="$(command -v kiro-cli 2>/dev/null || true)" ;;
+    cline-cli) resolved="$(command -v cline-cli 2>/dev/null || true)" ;;
+  esac
+
+  if [[ -n "$resolved" ]]; then
+    printf "exec '%s'" "$resolved"
+  else
+    printf "echo 'Command not found: %s'; exec bash -il" "$cmd"
+  fi
+}
+
 # If session already exists, just attach
 if tmux has-session -t "$SESSION" 2>/dev/null; then
   exec tmux attach-session -t "$SESSION"
@@ -68,9 +105,9 @@ first_cmd="${first%%:*}"
 first_name="${first#*:}"
 tmux new-session -d -s "$SESSION" -n "$first_name" -x 200 -y 50
 
-# Give the first window a shell that launches the agent
-# We use send-keys so the user can restart the agent if it exits
-tmux send-keys -t "$SESSION:$first_name" "$first_cmd" Enter
+# Launch each agent through a login shell so PATH matches the browser terminal.
+first_launch="$(launch_line_for "$first_cmd")"
+tmux send-keys -t "$SESSION:$first_name" "bash -ilc \"$first_launch\"" Enter
 
 # Create a window for each remaining agent
 for i in $(seq 1 $(( ${#AGENTS[@]} - 1 ))); do
@@ -78,7 +115,8 @@ for i in $(seq 1 $(( ${#AGENTS[@]} - 1 ))); do
   cmd="${entry%%:*}"
   name="${entry#*:}"
   tmux new-window -t "$SESSION" -n "$name"
-  tmux send-keys -t "$SESSION:$name" "$cmd" Enter
+  launch_cmd="$(launch_line_for "$cmd")"
+  tmux send-keys -t "$SESSION:$name" "bash -ilc \"$launch_cmd\"" Enter
 done
 
 # Add a plain shell window at the end

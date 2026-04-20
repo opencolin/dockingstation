@@ -1,4 +1,4 @@
-// Docking Station Dashboard
+// SafeMode Dashboard
 
 (function () {
   'use strict';
@@ -8,7 +8,6 @@
   const WEB_TOOLS = [
     { id: 'code-server', url: '/code-server/',  port: 8080 },
     { id: 'filebrowser', url: '/files/',         port: 8443 },
-    { id: 'novnc',       url: '/desktop/',       port: 6080 },
     { id: 'terminal',    url: '/terminal/',      port: 7681 },
     { id: 'safemode',    url: '/safemode/',      port: 80 },
   ];

@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" data-app="dockingstation" data-version="1.0.0">
+<html lang="en" data-app="safemode" data-version="1.0.0">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Docking Station</title>
+  <title>SafeMode</title>
   <meta name="description" content="Developer container dashboard with AI coding tools">
   <link rel="stylesheet" href="style.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Docking Station",
+    "name": "SafeMode",
     "description": "Developer container with 10 AI coding tools, accessible via web dashboard",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Ubuntu 22.04 LTS"
@@ -20,7 +20,7 @@
 <body>
   <header role="banner">
     <div class="header-content">
-      <h1>Docking Station</h1>
+      <h1>SafeMode</h1>
       <p class="subtitle">Developer Container</p>
       <div class="status-bar" role="status" aria-live="polite">
         <span class="status-dot" id="status-dot"></span>
@@ -33,8 +33,8 @@
     <nav aria-label="Tool categories">
       <div class="filter-bar">
         <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="editor">Editors</button>
-        <button class="filter-btn" data-filter="ai">AI Assistants</button>
+        <button class="filter-btn" data-filter="editor">Apps</button>
+        <button class="filter-btn" data-filter="ai">Terminals</button>
         <button class="filter-btn" data-filter="utility">Utilities</button>
       </div>
     </nav>
@@ -87,29 +87,6 @@
         </a>
       </article>
 
-      <article class="tool-card" data-tool="novnc" data-category="utility" data-port="6080" data-status="unknown">
-        <div class="card-icon utility-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="2" y="3" width="20" height="14" rx="2"/>
-            <path d="M8 21h8M12 17v4"/>
-          </svg>
-        </div>
-        <div class="card-body">
-          <h2>Desktop (noVNC)</h2>
-          <p class="card-desc">Full Linux desktop with 90s Mac theme</p>
-          <div class="card-meta">
-            <span class="port-badge">:6080</span>
-            <span class="status-indicator" aria-label="status"></span>
-          </div>
-        </div>
-        <a href="/desktop/" class="card-link" target="_blank" rel="noopener" aria-label="Open Desktop">
-          <span class="link-text">Open</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </a>
-      </article>
-
       <article class="tool-card" data-tool="safemode" data-category="utility" data-port="80" data-status="unknown">
         <div class="card-icon utility-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -118,14 +95,14 @@
           </svg>
         </div>
         <div class="card-body">
-          <h2>SafeMode</h2>
-          <p class="card-desc">Alternate retro frontend running in frontend-only mode</p>
+          <h2>Retro Frontend</h2>
+          <p class="card-desc">Static retro frontend for SafeMode</p>
           <div class="card-meta">
             <span class="port-badge">/safemode</span>
             <span class="status-indicator" aria-label="status"></span>
           </div>
         </div>
-        <a href="/safemode/" class="card-link" target="_blank" rel="noopener" aria-label="Open SafeMode">
+        <a href="/safemode/" class="card-link" target="_blank" rel="noopener" aria-label="Open Retro Frontend">
           <span class="link-text">Open</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
             <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -149,6 +126,29 @@
           </div>
         </div>
         <button class="card-link launch-cli" data-cmd="shell" aria-label="Launch terminal in browser">
+          <span class="link-text">Launch</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </article>
+
+      <article class="tool-card cli-tool" data-tool="cue" data-category="utility" data-command="cue" data-status="installed">
+        <div class="card-icon utility-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 3 4 7v10l8 4 8-4V7l-8-4Z"/>
+            <path d="M8 10v4M12 8v8M16 10v4"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h2>CUE</h2>
+          <p class="card-desc">Cue sheet and music library CLI by sf-tools</p>
+          <div class="card-meta">
+            <span class="cli-badge">CLI</span>
+            <code class="cmd">cue</code>
+          </div>
+        </div>
+        <button class="card-link launch-cli" data-cmd="cue" aria-label="Launch CUE in browser terminal">
           <span class="link-text">Launch</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
             <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -205,8 +205,9 @@
       <article class="tool-card cli-tool" data-tool="grok-cli" data-category="ai" data-command="grok" data-status="installed">
         <div class="card-icon ai-icon" style="--accent: #0F172A">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M4 12c0-4.418 3.582-8 8-8h8v8c0 4.418-3.582 8-8 8H4z"/>
-            <path d="M9 9h6M9 13h4"/>
+            <path d="M5 5h14v14H5z"/>
+            <path d="M15 8h-3a4 4 0 1 0 0 8h4"/>
+            <path d="M15 12h4"/>
           </svg>
         </div>
         <div class="card-body">
@@ -225,26 +226,30 @@
         </button>
       </article>
 
-      <article class="tool-card cli-tool" data-tool="t3-code" data-category="ai" data-command="t3" data-status="installed">
-        <div class="card-icon ai-icon" style="--accent: #111827">
+      <article class="tool-card" data-tool="t3-code" data-category="editor" data-port="3773" data-status="unknown">
+        <div class="card-icon editor-icon" style="--accent: #111827">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M4 6h16M4 12h10M4 18h16"/><path d="M18 9l2 3-2 3"/>
+            <path d="M5 6h14"/>
+            <path d="M5 12h14"/>
+            <path d="M5 18h8"/>
+            <path d="M17 6v12"/>
+            <path d="M13 9l4-3 4 3"/>
           </svg>
         </div>
         <div class="card-body">
           <h2>T3 Code</h2>
           <p class="card-desc">Theo's coding-agent workspace launcher</p>
           <div class="card-meta">
-            <span class="cli-badge">CLI</span>
-            <code class="cmd">t3</code>
+            <span class="port-badge">:3773</span>
+            <span class="status-indicator" aria-label="status"></span>
           </div>
         </div>
-        <button class="card-link launch-cli" data-cmd="t3" aria-label="Launch T3 Code in terminal">
-          <span class="link-text">Launch</span>
+        <a href="/t3-launch" class="card-link" target="_blank" rel="noopener" aria-label="Open T3 Code">
+          <span class="link-text">Open</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
             <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>
-        </button>
+        </a>
       </article>
 
       <article class="tool-card cli-tool" data-tool="kilo-cli" data-category="ai" data-command="kilo" data-status="installed">
@@ -743,9 +748,8 @@
 
   <footer role="contentinfo">
     <div class="footer-content">
-      <span>Docking Station v1.0</span>
+      <span>SafeMode v1.0</span>
       <a href="/api/tools" target="_blank" aria-label="Tools API (JSON)">API</a>
-      <a href="/desktop/" target="_blank" aria-label="Open retro desktop">Retro Desktop</a>
     </div>
   </footer>
 

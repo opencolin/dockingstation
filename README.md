@@ -1,14 +1,14 @@
-# Docking Station
+# SafeMode
 
 **One container. 30 tools. Every AI coding agent. Ready in 30 seconds.**
 
-Docking Station is a self-hosted developer environment that bundles every major AI coding agent into a single Docker container. It ships with a web dashboard, a browser-based terminal, a JSON API for automation, and a full Linux desktop — all behind optional password-protected access.
+SafeMode is a self-hosted developer environment that bundles every major AI coding agent into a single Docker container. It ships with a web dashboard, a browser-based terminal, a JSON API for automation, and a full Linux desktop — all behind optional password-protected access.
 
 Deploy it once and your entire team gets instant access to 25 AI coding agents and 5 development tools from any browser.
 
 ```bash
 docker run -d -p 8888:80 -e DEV_PASSWORD=securepwd \
-  -v workspace:/workspace dockingstation
+  -v workspace:/workspace safemode
 ```
 
 Open `http://your-server:8888`. Log in. Start coding.
@@ -55,7 +55,7 @@ Open `http://your-server:8888`. Log in. Start coding.
 | **File Browser** | `/files/` | Web-based file manager for `/workspace` |
 | **Browser Terminal** | `/terminal/` | GoTTY-powered shell — launch any CLI tool in a browser tab |
 | **Linux Desktop** | `/desktop/` | Full GUI desktop via noVNC with 90s Mac theme |
-| **SafeMode** | `/safemode/` | Alternate retro web frontend |
+| **Retro Frontend** | `/safemode/` | Alternate retro web frontend |
 
 ### Base Layer
 
@@ -118,20 +118,20 @@ supervisord ── manages all processes
 
 ```bash
 docker run -d \
-  --name dockingstation \
+  --name safemode \
   -p 8888:80 \
   -p 6080:6080 \
   -p 8080:8080 \
-  -v dockingstation-workspace:/workspace \
+  -v safemode-workspace:/workspace \
   -e DEV_PASSWORD=changeme \
-  dockingstation
+  safemode
 ```
 
 ### Without Auth
 
 ```bash
 docker run -d -p 8888:80 -e NO_AUTH=1 \
-  -v dockingstation-workspace:/workspace dockingstation
+  -v safemode-workspace:/workspace safemode
 ```
 
 ### Build from Source
@@ -139,7 +139,7 @@ docker run -d -p 8888:80 -e NO_AUTH=1 \
 ```bash
 git clone https://github.com/colygon/dockingstation.git
 cd dockingstation/dev-container
-docker build -t dockingstation .
+docker build -t safemode .
 ```
 
 ### Deploy to a Cloud VM
@@ -147,16 +147,16 @@ docker build -t dockingstation .
 ```bash
 docker run -d --restart unless-stopped \
   -p 443:80 \
-  -v dockingstation-workspace:/workspace \
+  -v safemode-workspace:/workspace \
   -e DEV_PASSWORD=your-secure-password \
-  dockingstation
+  safemode
 ```
 
 ---
 
 ## Terminal-Bench Rankings
 
-Several tools in Docking Station are top performers on [terminal-bench](https://www.tbench.ai):
+Several tools in SafeMode are top performers on [terminal-bench](https://www.tbench.ai):
 
 | Rank (v2.0) | Tool | Score |
 |-------------|------|-------|
@@ -213,7 +213,7 @@ GitHub Actions rebuilds the image daily at 02:00 UTC with the latest tool versio
 
 ## Docs
 
-Full documentation at [docs/](./docs/) (Mintlify).
+Full documentation lives in [docs/](./docs/).
 
 ## License
 

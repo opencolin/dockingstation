@@ -2,5 +2,5 @@
   <rect x="2" y="6" width="20" height="16" rx="2" stroke="#818CF8" stroke-width="2"/>
   <path d="M6 10h12M6 14h12M6 18h8" stroke="#818CF8" stroke-width="1.5" stroke-linecap="round"/>
   <circle cx="19" cy="19" r="3" fill="#818CF8"/>
-  <text x="30" y="20" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#E4E4EF">Docking Station</text>
+  <text x="30" y="20" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#E4E4EF">SafeMode</text>
 </svg>

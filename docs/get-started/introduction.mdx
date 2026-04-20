@@ -3,9 +3,9 @@ title: Introduction
 description: "One container. 25 AI coding tools. Ready in 30 seconds."
 ---
 
-# What is Docking Station?
+# What is SafeMode?
 
-Docking Station is a self-hosted developer environment that bundles **every major AI coding agent** into a single Docker container. It ships with a web dashboard for humans and a JSON API for automation — all behind password-protected access.
+SafeMode is a self-hosted developer environment that bundles **every major AI coding agent** into a single Docker container. It ships with a web dashboard for humans and a JSON API for automation — all behind password-protected access.
 
 <CardGroup cols={2}>
   <Card title="25 Tools" icon="toolbox">
@@ -36,7 +36,7 @@ Your engineering team wants to evaluate AI coding tools. Today that means:
 
 ```bash
 docker run -d -p 8888:80 -e DEV_PASSWORD=securepwd \
-  -v workspace:/workspace dockingstation
+  -v workspace:/workspace safemode
 ```
 
 Open `http://your-server:8888`. Log in. Start coding with any AI tool.

@@ -9,13 +9,13 @@ description: "Get running in under a minute."
   <Step title="Start the container">
     ```bash
     docker run -d \
-      --name dockingstation \
+      --name safemode \
       -p 8888:80 \
       -p 6080:6080 \
       -p 8080:8080 \
-      -v dockingstation-workspace:/workspace \
+      -v safemode-workspace:/workspace \
       -e DEV_PASSWORD=changeme \
-      dockingstation
+      safemode
     ```
   </Step>
   <Step title="Open the dashboard">
@@ -35,7 +35,7 @@ description: "Get running in under a minute."
 ```bash
 git clone https://github.com/colygon/dockingstation.git
 cd dockingstation/dev-container
-docker build -t dockingstation .
+docker build -t safemode .
 ```
 
 <Warning>
@@ -48,9 +48,9 @@ docker build -t dockingstation .
 # On any VM with Docker installed:
 docker run -d --restart unless-stopped \
   -p 443:80 \
-  -v dockingstation-workspace:/workspace \
+  -v safemode-workspace:/workspace \
   -e DEV_PASSWORD=your-secure-password \
-  dockingstation
+  safemode
 ```
 
 <Tip>
@@ -78,6 +78,6 @@ docker run -d \
   -e GOOGLE_API_KEY=... \
   -e AWS_ACCESS_KEY_ID=... \
   -e AWS_SECRET_ACCESS_KEY=... \
-  -v dockingstation-workspace:/workspace \
-  dockingstation
+  -v safemode-workspace:/workspace \
+  safemode
 ```
